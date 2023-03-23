@@ -6,14 +6,14 @@ import 'package:koudmen/size_config.dart';
 import 'package:koudmen/widgets/customCheckBox.dart';
 import 'package:koudmen/widgets/customTextField.dart';
 
-class Register1Page extends StatefulWidget {
-  Register1Page({Key key}) : super(key: key);
+class Register1KoudmenAugmenterPage extends StatefulWidget {
+  Register1KoudmenAugmenterPage({Key key}) : super(key: key);
 
   @override
   _Register1PageState createState() => _Register1PageState();
 }
 
-class _Register1PageState extends State<Register1Page> {
+class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
   final _formKey = GlobalKey<FormState>();
 
   /// Fonction permettant de soumettre un formulaire

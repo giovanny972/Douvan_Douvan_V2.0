@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
-import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase1%20Koudment.dart';
+import 'package:koudmen/screens/home.dart';
 
-class Register4KoudmenPage extends StatelessWidget {
-  const Register4KoudmenPage({Key key}) : super(key: key);
+class Register6KoudmenPage extends StatelessWidget {
+  const Register6KoudmenPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class Register4KoudmenPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                              'assets/images/image_application_1.png'),
+                              'assets/images/image_application_7.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -53,7 +52,7 @@ class Register4KoudmenPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                              'assets/images/image_application_2.png'),
+                              'assets/images/image_application_8.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -71,7 +70,7 @@ class Register4KoudmenPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Register5KoudmenPage(),
+                                  builder: (context) => MyHomePage(),
                                 ),
                               );
                             },

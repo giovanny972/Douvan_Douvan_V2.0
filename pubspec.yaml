@@ -35,7 +35,7 @@ dependencies:
 
   chips_choice: ^2.0.1
   circular_countdown_timer: ^0.2.0
-  video_player: ^2.6.0
+  # video_player: ^2.6.0
   google_fonts: ^3.0.1
   firebase_core: ^2.8.0
   firebase_auth: ^4.3.0
@@ -68,6 +68,7 @@ flutter:
     - assets/images/undraw_new_ideas_jdea.png
     - assets/images/undraw_Notify_re_65on.png
     - assets/images/register1_state.png
+    - assets/images/image_application_1.png
     - assets/icons/
     - assets/images/
     # - assets/videos/

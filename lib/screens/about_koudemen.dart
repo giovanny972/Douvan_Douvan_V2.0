@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/register_1_phase1.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
-import 'package:koudmen/screens/Koudmen inscription/register_4_phase1 Koudment.dart';
+import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_1_phase1Koudmen_Augmenter.dart';
 
 class AboutKoudmenPage extends StatefulWidget {
   AboutKoudmenPage({Key key}) : super(key: key);
@@ -98,7 +97,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                             child: Text(
                               "Inscription Koudmen",
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.normal,
                               ),
@@ -117,7 +116,8 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Register4KoudmenPage(),
+                                  builder: (context) =>
+                                      Register1KoudmenAugmenterPage(),
                                 ),
                               );
                             },
@@ -129,9 +129,9 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                             ),
                             child: Center(
                               child: Text(
-                                "Inscription Koudmen Augmenter",
+                                "Inscription Koudmen.A",
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.normal,
                                 ),
