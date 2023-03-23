@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "743908718878",
+    "project_id": "douvan-douvan1",
+    "storage_bucket": "douvan-douvan1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743908718878:android:a31db451021f25e0e1f10f",
+        "android_client_info": {
+          "package_name": "com.example.koudmen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743908718878-78sbtlor5q12dkd99j7ghiorqc96h56l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOJ2ZsNFbUmwko1xP1J6vyq4KaF-21aFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743908718878-78sbtlor5q12dkd99j7ghiorqc96h56l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
