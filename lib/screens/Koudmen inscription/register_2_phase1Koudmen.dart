@@ -62,12 +62,10 @@ class Register2Form extends StatefulWidget {
 class _Register2FormState extends State<Register2Form> {
   /// Fonction permettant de soumettre un formulaire
   Future<String> sendForm(
-    String structureName,
     adress,
     city,
     zipCode,
-    siretNumber,
-    structurephone,
+    phone,
     var previousForm,
   ) async {
     // var url = Uri.parse("http://url);
@@ -76,10 +74,7 @@ class _Register2FormState extends State<Register2Form> {
     decode["adress"] = adress;
     decode["city"] = city;
     decode["zipCode"] = zipCode;
-    decode["siretNumber"] = siretNumber;
-    decode["structurephone"] = structurephone;
-    decode["siretNumber"] = siretNumber;
-    decode["siretNumber"] = siretNumber;
+    decode["structurephone"] = phone;
     var res = jsonEncode(decode);
 
     print(decode);
@@ -90,7 +85,7 @@ class _Register2FormState extends State<Register2Form> {
   @override
   Widget build(BuildContext context) {
     String errorMess = "";
-    String structureName, adress, city, zipCode, siretNumber, structurephone;
+    String adress, city, zipCode, phone;
     var size = MediaQuery.of(context).size;
     return Stack(
       children: [
@@ -138,18 +133,6 @@ class _Register2FormState extends State<Register2Form> {
                           top: defaultPadding),
                       child: Column(
                         children: [
-                          // Name of the structure
-                          CustomTextField(
-                              onSaved: (String value) {
-                                structureName = value;
-                              },
-                              errorMessage: "Please, complet ths field",
-                              hintText: "Name of the structure",
-                              icon: Icon(
-                                CustomIcons.gg_circle,
-                                color: formIconCol,
-                              )),
-
                           // Space
                           SizedBox(height: propHeight(10)),
 
@@ -158,8 +141,9 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               adress = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Adress",
+                            errorMessage:
+                                "S'il vous plaît, remplissez ce champ.",
+                            hintText: "Adresse",
                             icon: Icon(
                               Icons.location_on,
                               color: formIconCol,
@@ -174,8 +158,9 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               city = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "City",
+                            errorMessage:
+                                "S'il vous plaît, remplissez ce champ.",
+                            hintText: "Ville",
                             icon: Icon(
                               CustomIcons.city,
                               color: formIconCol,
@@ -191,35 +176,21 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               zipCode = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Zip code",
+                            errorMessage:
+                                "S'il vous plaît, remplissez ce champ.",
+                            hintText: "Code Postal",
                             icon: zipCodeIcon,
                           ),
-
-                          // Space
-                          SizedBox(height: 10),
-                          // Siret number
-                          CustomTextField(
-                            onSaved: (String value) {
-                              siretNumber = value;
-                            },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Siret number",
-                            icon: Icon(
-                              Icons.confirmation_num,
-                              color: formIconCol,
-                            ),
-                          ),
-
                           // Space
                           SizedBox(height: propHeight(10)),
                           // Phone
                           CustomTextField(
                             onSaved: (String value) {
-                              structurephone = value;
+                              phone = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Phone of your structure",
+                            errorMessage:
+                                "S'il vous plaît, remplissez ce champ.",
+                            hintText: "TéléPhone",
                             icon: Icon(
                               Icons.phone,
                               color: formIconCol,
@@ -245,12 +216,10 @@ class _Register2FormState extends State<Register2Form> {
                                     // Save values to send
                                     _formKey.currentState.save();
                                     var formValues = await sendForm(
-                                        structureName,
                                         adress,
                                         city,
                                         zipCode,
-                                        siretNumber,
-                                        structurephone,
+                                        phone,
                                         widget.previousFormValues);
 
                                     print(formValues);
@@ -275,7 +244,7 @@ class _Register2FormState extends State<Register2Form> {
                                   ),
                                 ),
                                 child: Text(
-                                  "Next",
+                                  "Suivant",
                                   style: TextStyle(
                                     fontSize: propHeight(14),
                                     fontFamily: 'Montserrat',

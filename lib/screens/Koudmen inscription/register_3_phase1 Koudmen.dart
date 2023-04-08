@@ -171,7 +171,7 @@ class QuestionCard extends StatelessWidget {
               ),
               Text(questionsList[i]),
               Text(
-                "${i + 1} of ${questionCount}",
+                "${i + 1} sur ${questionCount}",
                 style: TextStyle(fontSize: propHeight(8)),
               ),
             ],

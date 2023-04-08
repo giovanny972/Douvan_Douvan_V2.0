@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/home.dart';
+import 'package:koudmen/screens/about_koudemen.dart';
 
 class Register6KoudmenPage extends StatelessWidget {
   const Register6KoudmenPage({Key key}) : super(key: key);
@@ -70,7 +70,7 @@ class Register6KoudmenPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MyHomePage(),
+                                  builder: (context) => AboutKoudmenPage(),
                                 ),
                               );
                             },
@@ -101,6 +101,5 @@ class Register6KoudmenPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
