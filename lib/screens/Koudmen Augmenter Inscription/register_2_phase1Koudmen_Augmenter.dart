@@ -142,8 +142,8 @@ class _Register2FormState extends State<Register2Form> {
                               onSaved: (String value) {
                                 structureName = value;
                               },
-                              errorMessage: "Please, complet ths field",
-                              hintText: "Name of the structure",
+                              errorMessage: "Veuillez remplir ce champ",
+                              hintText: "Nom de la structure.",
                               icon: Icon(
                                 CustomIcons.gg_circle,
                                 color: formIconCol,
@@ -157,8 +157,8 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               adress = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Adress",
+                            errorMessage: "Veuillez remplir ce champ",
+                            hintText: "Adresse",
                             icon: Icon(
                               Icons.location_on,
                               color: formIconCol,
@@ -173,8 +173,8 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               city = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "City",
+                            errorMessage: "Veuillez remplir ce champ",
+                            hintText: "Ville",
                             icon: Icon(
                               CustomIcons.city,
                               color: formIconCol,
@@ -190,8 +190,8 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               zipCode = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Zip code",
+                            errorMessage: "Veuillez remplir ce champ",
+                            hintText: "Code postal",
                             icon: zipCodeIcon,
                           ),
 
@@ -202,8 +202,8 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               siretNumber = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Siret number",
+                            errorMessage: "Veuillez remplir ce champ",
+                            hintText: "Numéro de Siret",
                             icon: Icon(
                               Icons.confirmation_num,
                               color: formIconCol,
@@ -217,8 +217,8 @@ class _Register2FormState extends State<Register2Form> {
                             onSaved: (String value) {
                               structurephone = value;
                             },
-                            errorMessage: "Please, complet ths field",
-                            hintText: "Phone of your structure",
+                            errorMessage: "Veuillez remplir ce champ",
+                            hintText: "Téléphone de la structure",
                             icon: Icon(
                               Icons.phone,
                               color: formIconCol,
@@ -273,7 +273,7 @@ class _Register2FormState extends State<Register2Form> {
                                   ),
                                 ),
                                 child: Text(
-                                  "Next",
+                                  "Suivant",
                                   style: TextStyle(
                                     fontSize: propHeight(14),
                                     fontFamily: 'Montserrat',

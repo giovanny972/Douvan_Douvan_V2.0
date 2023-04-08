@@ -49,7 +49,7 @@ class Register3Page extends StatelessWidget {
                             fontFamily: 'Montserrat',
                             fontSize: propHeight(10)),
                         hintText:
-                            "Write 10 keys words on the social and Solidarity Economy...",
+                            "Écrivez 10 mots clés sur l'économie sociale et solidaire...",
                         filled: true,
                         border: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -78,7 +78,7 @@ class Register3Page extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        "Next",
+                        "Suivant",
                         style: TextStyle(
                           fontSize: propHeight(14),
                           fontFamily: 'Montserrat',
@@ -161,7 +161,7 @@ class QuestionCard extends StatelessWidget {
               ),
               Text(questionsList[i]),
               Text(
-                "${i + 1} of ${questionCount}",
+                "${i + 1} sur ${questionCount}",
                 style: TextStyle(fontSize: propHeight(8)),
               ),
             ],
@@ -173,15 +173,15 @@ class QuestionCard extends StatelessWidget {
 }
 
 List questionsList = [
-  "Have you ever participated in an action in the koudmen-type social and solidarity economy ?",
-  "Do you agree with the main principles of augmented Koudmen ?",
-  "Do you agree with the vision of a shared common destiny ?"
+  "Avez-vous déjà participé à une action dans le cadre de l'économie sociale et solidaire de type koudmen ?"
+      "Êtes-vous d'accord avec les principes fondamentaux de Koudmen augmenté ?"
+      "Êtes-vous d'accord avec la vision d'un destin commun partagé ?"
 ];
 
 Map answersMap = {
-  "1": ["Yes", "No", "Maybe"],
-  "2": ["Yes", "No", "Maybe"],
-  "3": ["Yes", "No"]
+  "1": ["Oui", "Non", "Peut etre"],
+  "2": ["Oui", "Non", "Peut etre"],
+  "3": ["Oui", "Non"]
 };
 
 enum SingingCharacter { lafayette, jefferson }

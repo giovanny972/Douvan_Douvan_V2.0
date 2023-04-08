@@ -25,10 +25,10 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
   ) async {
     // var url = Uri.parse("http://url);
     var res = jsonEncode(<String, String>{
-      'fullName': fullName,
-      'firstName': firstName,
+      'Nom': fullName,
+      'Prenom': firstName,
       'email': email,
-      'phone': phone,
+      'Téléphone': phone,
     });
     return res;
   }
@@ -162,8 +162,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                             fullName = value;
                                           },
                                           errorMessage:
-                                              "Please, complet ths field",
-                                          hintText: "Full name",
+                                              "Veuillez remplir ce champ",
+                                          hintText: "Nom",
                                           icon: Icon(
                                             Icons.person,
                                             color: formIconCol,
@@ -179,8 +179,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                             firstName = value;
                                           },
                                           errorMessage:
-                                              "Please, complet ths field",
-                                          hintText: "First name",
+                                              "Veuillez remplir ce champ",
+                                          hintText: "Prénom",
                                           icon: Icon(
                                             Icons.person,
                                             color: formIconCol,
@@ -196,7 +196,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                             email = value;
                                           },
                                           errorMessage:
-                                              "Please, complet ths field",
+                                              "Veuillez remplir ce champ",
                                           hintText: "Email",
                                           icon: Icon(
                                             Icons.email,
@@ -213,7 +213,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                             confirmEmail = value;
                                           },
                                           errorMessage:
-                                              "Please, complet ths field",
+                                              "Veuillez remplir ce champ",
                                           hintText: "Re-enter Email",
                                           icon: Icon(
                                             Icons.email,
@@ -229,8 +229,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                             phone = value;
                                           },
                                           errorMessage:
-                                              "Please, complet ths field",
-                                          hintText: "Phone",
+                                              "Veuillez remplir ce champ",
+                                          hintText: "Téléphone",
                                           icon: Icon(
                                             Icons.phone,
                                             color: formIconCol,
@@ -240,7 +240,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                         CustomCheckBox(
                                             required_: true,
                                             title:
-                                                "I certify on the honor of being in legal capacity to represent the structure."),
+                                                "Je certifie sur l'honneur être en capacité légale de représenter la structure"),
                                         // Space
                                         SizedBox(height: propHeight(10)),
 
@@ -292,7 +292,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                                         ));
                                                   } else {
                                                     setState(() {
-                                                      print("erreur d'emailr");
+                                                      print("erreur d'email");
                                                       emailCheckError =
                                                           "Erreur";
                                                     });
@@ -308,7 +308,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                                 ),
                                               ),
                                               child: Text(
-                                                "Next",
+                                                "Suivant",
                                                 style: TextStyle(
                                                   fontSize: propHeight(14),
                                                   fontFamily: 'Montserrat',
