@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
 import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_1_phase1Koudmen_Augmenter.dart';
+import 'package:koudmen/widgets/vidéoplayer.dart';
 
 class AboutKoudmenPage extends StatefulWidget {
   AboutKoudmenPage({Key key}) : super(key: key);
@@ -47,14 +48,14 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                           height: size.height * 0.25,
                           width: size.width * 0.8,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Colors.brown,
-                                    Colors.brown.shade800
-                                  ])),
+                            borderRadius: BorderRadius.circular(40),
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomRight,
+                              colors: [Colors.brown, Colors.brown.shade800],
+                            ),
+                          ),
+                          child: VideoPlayerWidget(),
                         ),
 
                         SizedBox(height: 10),
@@ -122,7 +123,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: purpleCol,
+                              primary: Colors.red,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9),
                               ),
@@ -131,7 +132,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                               child: Text(
                                 "Inscription Koudmen.A",
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 11,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.normal,
                                 ),

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
@@ -72,7 +74,7 @@ class Register3Page extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        primary: purpleCol,
+                        primary: Colors.red,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),

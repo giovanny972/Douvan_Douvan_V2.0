@@ -267,7 +267,7 @@ class _Register2FormState extends State<Register2Form> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0,
-                                  primary: purpleCol,
+                                  primary: Colors.red,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5),
                                   ),

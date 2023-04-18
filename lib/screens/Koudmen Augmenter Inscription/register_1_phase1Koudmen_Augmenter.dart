@@ -301,7 +301,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                               },
                                               style: ElevatedButton.styleFrom(
                                                 elevation: 0,
-                                                primary: purpleCol,
+                                                primary: Colors.red,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(5),

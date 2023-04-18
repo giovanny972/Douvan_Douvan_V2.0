@@ -102,6 +102,5 @@ class Register4KoudmenPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
