@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
+import 'package:koudmen/screens/about_koudemen.dart';
 
 class Register3Page extends StatelessWidget {
   final String previousFormValues;
@@ -71,7 +72,14 @@ class Register3Page extends StatelessWidget {
                   width: propWidth(183),
                   constraints: BoxConstraints(maxWidth: 300, minWidth: 100),
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AboutKoudmenPage(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         primary: Colors.red,

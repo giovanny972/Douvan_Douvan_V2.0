@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
+import 'package:koudmen/screens/Koudmen inscription/register_7_phase1 Koudment.dart';
 
 class Register6KoudmenPage extends StatelessWidget {
   const Register6KoudmenPage({Key key}) : super(key: key);
@@ -70,7 +71,7 @@ class Register6KoudmenPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Register1KoudmenPage(),
+                                  builder: (context) => Register7KoudmenPage(),
                                 ),
                               );
                             },

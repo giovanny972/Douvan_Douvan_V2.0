@@ -1,8 +1,12 @@
+// ignore_for_file: unused_label
+
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
+import 'package:koudmen/screens/Connexion/loginPage.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
 import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_1_phase1Koudmen_Augmenter.dart';
 import 'package:koudmen/widgets/vidéoplayer.dart';
+import 'package:koudmen/screens/Connexion/loginPage.dart';
 
 class AboutKoudmenPage extends StatefulWidget {
   AboutKoudmenPage({Key key}) : super(key: key);
@@ -21,7 +25,6 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
           child: Stack(
             children: [
               // Background
-
               Container(
                 height: 300,
                 decoration: BoxDecoration(
@@ -47,14 +50,6 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                         Container(
                           height: size.height * 0.25,
                           width: size.width * 0.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomRight,
-                              colors: [Colors.brown, Colors.brown.shade800],
-                            ),
-                          ),
                           child: VideoPlayerWidget(),
                         ),
 
@@ -77,7 +72,6 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                         SizedBox(
                           height: 33,
                           width: 183,
-
                           // Bouton register
                           child: ElevatedButton(
                             onPressed: () {
@@ -143,15 +137,26 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                         SizedBox(height: 10),
 
                         // Text register
-                        Text(
-                          "Déjà enregistré ?",
-                          style: TextStyle(
-                            color: purpleCol,
-                            fontSize: 14,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.normal,
+                        GestureDetector(
+                          onTap: () {
+                            // Redirection to another page
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginPage(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "Déjà enregistré ?",
+                            style: TextStyle(
+                              color: purpleCol,
+                              fontSize: 14,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],
