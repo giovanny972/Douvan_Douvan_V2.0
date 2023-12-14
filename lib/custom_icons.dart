@@ -23,7 +23,7 @@ class CustomIcons {
   CustomIcons._();
 
   static const _kFontFam = 'CustomIcons';
-  static const String _kFontPkg = null;
+  static const Null _kFontPkg = null;
 
   static const IconData gg_circle =
       IconData(0xf261, fontFamily: _kFontFam, fontPackage: _kFontPkg);

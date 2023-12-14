@@ -4,7 +4,7 @@ import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.da
 import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase1%20Koudment.dart';
 
 class Register4KoudmenPage extends StatelessWidget {
-  const Register4KoudmenPage({Key key}) : super(key: key);
+  const Register4KoudmenPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

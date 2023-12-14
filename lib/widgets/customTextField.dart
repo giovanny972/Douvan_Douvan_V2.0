@@ -9,15 +9,16 @@ class CustomTextField extends StatefulWidget {
   final void Function(String) onSaved;
   final Widget icon;
   final int maxLength;
-  String value;
+  late String value;
+
   CustomTextField({
-    this.labelText,
-    this.onSaved,
-    this.hintText,
+    required this.labelText,
+    required this.onSaved,
+    required this.hintText,
     this.obscureText = false,
-    this.errorMessage,
-    this.icon,
-    this.maxLength,
+    required this.errorMessage,
+    required this.icon,
+    required this.maxLength,
   });
 
   @override
@@ -25,16 +26,22 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+  late TextEditingController _controller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onSaved: widget.onSaved,
+      controller: _controller,
+      onSaved: (value) {
+        widget.onSaved(value!);
+      },
       onChanged: (value) {
-        widget.value = value;
+        setState(() {
+          widget.value = value;
+        });
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          widget.value = value;
+          widget.value = value!;
           return widget.errorMessage;
         }
         widget.value = value;

@@ -7,7 +7,7 @@ import 'package:koudmen/widgets/customCheckBox.dart';
 import 'package:koudmen/widgets/customTextField.dart';
 
 class Register1Page extends StatefulWidget {
-  Register1Page({Key key}) : super(key: key);
+  Register1Page({Key? key}) : super(key: key);
 
   @override
   _Register1PageState createState() => _Register1PageState();
@@ -38,7 +38,7 @@ class _Register1PageState extends State<Register1Page> {
     var size = MediaQuery.of(context).size;
 
     // Données formulaire
-    String fullName, firstName, email, phone, confirmEmail;
+    late String fullName, firstName, email, phone, confirmEmail;
     String emailCheckError = "";
 
     return Container(
@@ -158,6 +158,8 @@ class _Register1PageState extends State<Register1Page> {
                                       children: [
                                         // Full name
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "test",
                                           onSaved: (String value) {
                                             fullName = value;
                                           },
@@ -175,6 +177,8 @@ class _Register1PageState extends State<Register1Page> {
 
                                         // First name
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "",
                                           onSaved: (String value) {
                                             firstName = value;
                                           },
@@ -192,6 +196,8 @@ class _Register1PageState extends State<Register1Page> {
 
                                         // Email
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "test",
                                           onSaved: (String value) {
                                             email = value;
                                           },
@@ -209,6 +215,8 @@ class _Register1PageState extends State<Register1Page> {
 
                                         // Email confirmation
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "test",
                                           onSaved: (String value) {
                                             confirmEmail = value;
                                           },
@@ -225,6 +233,8 @@ class _Register1PageState extends State<Register1Page> {
                                         SizedBox(height: 10),
                                         // phone
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "",
                                           onSaved: (String value) {
                                             phone = value;
                                           },
@@ -238,6 +248,10 @@ class _Register1PageState extends State<Register1Page> {
                                         ),
                                         SizedBox(height: propHeight(10)),
                                         CustomCheckBox(
+                                            erreur: "",
+                                            onSaved: (value) {
+                                              confirmEmail = value as String;
+                                            },
                                             required_: true,
                                             title:
                                                 "I certify on the honor of being in legal capacity to represent the structure."),
@@ -260,10 +274,10 @@ class _Register1PageState extends State<Register1Page> {
                                           child: ElevatedButton(
                                               onPressed: () async {
                                                 // Check if all fields are complete and if email are the same
-                                                if (_formKey.currentState
+                                                if (_formKey.currentState!
                                                     .validate()) {
                                                   // Save values to send
-                                                  _formKey.currentState.save();
+                                                  _formKey.currentState!.save();
 
                                                   if (confirmEmail == email) {
                                                     setState(() {
@@ -301,7 +315,7 @@ class _Register1PageState extends State<Register1Page> {
                                               },
                                               style: ElevatedButton.styleFrom(
                                                 elevation: 0,
-                                                primary: purpleCol,
+                                                backgroundColor: purpleCol,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(5),

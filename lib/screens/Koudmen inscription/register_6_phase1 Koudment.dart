@@ -3,7 +3,7 @@ import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
 
 class Register6KoudmenPage extends StatelessWidget {
-  const Register6KoudmenPage({Key key}) : super(key: key);
+  const Register6KoudmenPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:koudmen/screens/about_koudemen.dart';
 import 'package:koudmen/constantes.dart';
 
 class GetStartedPage extends StatefulWidget {
-  GetStartedPage({Key key}) : super(key: key);
+  GetStartedPage({Key? key}) : super(key: key);
 
   @override
   _GetStartedPageState createState() => _GetStartedPageState();

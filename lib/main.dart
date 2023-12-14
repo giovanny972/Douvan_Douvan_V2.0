@@ -17,12 +17,17 @@ class KoudmenApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color.fromRGBO(0, 69, 86, 1), //
         primarySwatch: Colors.blue,
-        buttonColor: blueCol,
-        accentColor: blueCol,
+        buttonTheme: ButtonThemeData(
+          buttonColor: blueCol,
+        ),
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.blue,
+          accentColor: blueCol,
+        ),
         textTheme: Theme.of(context).textTheme.apply(bodyColor: blueCol),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      home: MyHomePage(title: 'Home'),
     );
   }
 }

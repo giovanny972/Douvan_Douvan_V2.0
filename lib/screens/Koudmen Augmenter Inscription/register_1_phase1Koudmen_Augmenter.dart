@@ -7,7 +7,7 @@ import 'package:koudmen/widgets/customCheckBox.dart';
 import 'package:koudmen/widgets/customTextField.dart';
 
 class Register1KoudmenAugmenterPage extends StatefulWidget {
-  Register1KoudmenAugmenterPage({Key key}) : super(key: key);
+  Register1KoudmenAugmenterPage({Key? key}) : super(key: key);
 
   @override
   _Register1PageState createState() => _Register1PageState();
@@ -38,7 +38,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
     var size = MediaQuery.of(context).size;
 
     // Données formulaire
-    String fullName, firstName, email, phone, confirmEmail;
+    late String fullName, firstName, email, phone, confirmEmail;
     String emailCheckError = "";
 
     return Container(
@@ -158,6 +158,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                       children: [
                                         // Full name
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "",
                                           onSaved: (String value) {
                                             fullName = value;
                                           },
@@ -175,6 +177,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
 
                                         // First name
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "",
                                           onSaved: (String value) {
                                             firstName = value;
                                           },
@@ -192,6 +196,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
 
                                         // Email
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "",
                                           onSaved: (String value) {
                                             email = value;
                                           },
@@ -209,6 +215,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
 
                                         // Email confirmation
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "",
                                           onSaved: (String value) {
                                             confirmEmail = value;
                                           },
@@ -225,6 +233,8 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                         SizedBox(height: 10),
                                         // phone
                                         CustomTextField(
+                                          maxLength: 10,
+                                          labelText: "",
                                           onSaved: (String value) {
                                             phone = value;
                                           },
@@ -238,6 +248,10 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                         ),
                                         SizedBox(height: propHeight(10)),
                                         CustomCheckBox(
+                                            erreur: "",
+                                            onSaved: (value) {
+                                              confirmEmail = value as String;
+                                            },
                                             required_: true,
                                             title:
                                                 "Je certifie sur l'honneur être en capacité légale de représenter la structure"),
@@ -260,10 +274,10 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                           child: ElevatedButton(
                                               onPressed: () async {
                                                 // Check if all fields are complete and if email are the same
-                                                if (_formKey.currentState
+                                                if (_formKey.currentState!
                                                     .validate()) {
                                                   // Save values to send
-                                                  _formKey.currentState.save();
+                                                  _formKey.currentState!.save();
 
                                                   if (confirmEmail == email) {
                                                     setState(() {

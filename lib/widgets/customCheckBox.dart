@@ -15,11 +15,11 @@ class CustomCheckBox extends StatefulWidget {
   void Function(bool) onSaved;
 
   CustomCheckBox({
-    Key key,
-    this.erreur,
-    this.required_,
-    this.onSaved,
-    @required this.title,
+    Key? key,
+    required this.erreur,
+    required this.required_,
+    required this.onSaved,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,9 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
   @override
   Widget build(BuildContext context) {
     return FormField<bool>(
-        onSaved: widget.onSaved,
+        onSaved: (newValue) {
+          widget.onSaved(newValue!);
+        },
         initialValue: false,
         validator: (value) {
           // On vérifie s'il est obligatoire ou pas
@@ -57,11 +59,11 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
                   Checkbox(
                     checkColor: whiteCol,
                     activeColor: lightGreyCol,
-                    value: this.value,
-                    onChanged: (bool newValue) {
+                    value: value,
+                    onChanged: (newValue) {
                       formFieldState.didChange(newValue);
                       setState(() {
-                        this.value = newValue;
+                        value = newValue!;
                         print(newValue);
                       });
                     },
@@ -85,8 +87,8 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
                   formFieldState.errorText ?? "",
                   style: Theme.of(context)
                       .textTheme
-                      .caption
-                      .copyWith(color: Theme.of(context).errorColor),
+                      .bodySmall
+                      ?.copyWith(color: Theme.of(context).colorScheme.error),
                 ),
             ],
           );

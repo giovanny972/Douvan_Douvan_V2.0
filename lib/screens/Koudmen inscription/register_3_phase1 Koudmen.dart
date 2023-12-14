@@ -5,7 +5,7 @@ import 'package:koudmen/screens/Koudmen inscription/register_4_phase1 Koudment.d
 
 class Register3KoudmenPage extends StatelessWidget {
   final String previousFormValues;
-  const Register3KoudmenPage({Key key, this.previousFormValues})
+  const Register3KoudmenPage({Key? key, required this.previousFormValues})
       : super(key: key);
 
   @override
@@ -106,7 +106,7 @@ class Register3KoudmenPage extends StatelessWidget {
 }
 
 class CardSwiper extends StatefulWidget {
-  CardSwiper({Key key}) : super(key: key);
+  CardSwiper({Key? key}) : super(key: key);
 
   @override
   _CardSwiperState createState() => _CardSwiperState();
@@ -145,10 +145,10 @@ class QuestionCard extends StatelessWidget {
   final int questionCount;
   final List questionsList;
   const QuestionCard({
-    Key key,
-    this.i,
-    this.questionCount,
-    this.questionsList,
+    Key? key,
+    required this.i,
+    required this.questionCount,
+    required this.questionsList,
   }) : super(key: key);
 
   @override
@@ -198,7 +198,7 @@ enum SingingCharacter { lafayette, jefferson }
 
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key key}) : super(key: key);
+  const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
@@ -222,9 +222,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             value: SingingCharacter.lafayette,
             groupValue: _character,
-            onChanged: (SingingCharacter value) {
+            onChanged: (value) {
               setState(() {
-                _character = value;
+                _character = value!;
               });
             },
           ),
@@ -232,9 +232,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             title: const Text('Thomas Jefferson'),
             value: SingingCharacter.jefferson,
             groupValue: _character,
-            onChanged: (SingingCharacter value) {
+            onChanged: (value) {
               setState(() {
-                _character = value;
+                _character = value!;
               });
             },
           ),

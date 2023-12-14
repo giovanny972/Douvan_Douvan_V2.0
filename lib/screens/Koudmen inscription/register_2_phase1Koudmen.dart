@@ -9,7 +9,7 @@ import 'package:koudmen/widgets/customTextField.dart';
 
 class Register2KoudmenPage extends StatelessWidget {
   final String previousFormValues;
-  const Register2KoudmenPage({Key key, this.previousFormValues})
+  const Register2KoudmenPage({Key? key, required this.previousFormValues})
       : super(key: key);
 
   @override
@@ -53,7 +53,7 @@ class Register2KoudmenPage extends StatelessWidget {
 
 class Register2Form extends StatefulWidget {
   final String previousFormValues;
-  Register2Form({Key key, this.previousFormValues}) : super(key: key);
+  Register2Form({Key? key, required this.previousFormValues}) : super(key: key);
 
   @override
   _Register2FormState createState() => _Register2FormState();
@@ -85,7 +85,7 @@ class _Register2FormState extends State<Register2Form> {
   @override
   Widget build(BuildContext context) {
     String errorMess = "";
-    String adress, city, zipCode, phone;
+    late String adress, city, zipCode, phone;
     var size = MediaQuery.of(context).size;
     return Stack(
       children: [
@@ -138,6 +138,8 @@ class _Register2FormState extends State<Register2Form> {
 
                           // Adress
                           CustomTextField(
+                            maxLength: 10,
+                            labelText: "",
                             onSaved: (String value) {
                               adress = value;
                             },
@@ -155,6 +157,8 @@ class _Register2FormState extends State<Register2Form> {
 
                           // City
                           CustomTextField(
+                            maxLength: 10,
+                            labelText: "",
                             onSaved: (String value) {
                               city = value;
                             },
@@ -173,6 +177,8 @@ class _Register2FormState extends State<Register2Form> {
 
                           // Zip Code
                           CustomTextField(
+                            maxLength: 10,
+                            labelText: "",
                             onSaved: (String value) {
                               zipCode = value;
                             },
@@ -185,6 +191,8 @@ class _Register2FormState extends State<Register2Form> {
                           SizedBox(height: propHeight(10)),
                           // Phone
                           CustomTextField(
+                            maxLength: 10,
+                            labelText: "",
                             onSaved: (String value) {
                               phone = value;
                             },
@@ -212,9 +220,9 @@ class _Register2FormState extends State<Register2Form> {
                             child: ElevatedButton(
                                 onPressed: () async {
                                   // Check if all fields are complete and if email are the same
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKey.currentState!.validate()) {
                                     // Save values to send
-                                    _formKey.currentState.save();
+                                    _formKey.currentState!.save();
                                     var formValues = await sendForm(
                                         adress,
                                         city,
@@ -286,7 +294,7 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
   String get restorationId => 'filter_chip_demo';
 
   @override
-  void restoreState(RestorationBucket oldBucket, bool initialRestore) {
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
     registerForRestoration(isSelectedHealth, 'selected_health');
     registerForRestoration(isSelectedSocial, 'selected_social');
     registerForRestoration(isSelectedArtistic, 'selected_artistic');

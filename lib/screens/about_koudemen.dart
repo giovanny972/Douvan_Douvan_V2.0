@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
 import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_1_phase1Koudmen_Augmenter.dart';
+import 'dart:async' show Future;
+import 'package:video_player/video_player.dart';
 
 class AboutKoudmenPage extends StatefulWidget {
-  AboutKoudmenPage({Key key}) : super(key: key);
+  AboutKoudmenPage({Key? key}) : super(key: key);
 
   @override
   _AboutKoudmenPageState createState() => _AboutKoudmenPageState();
@@ -55,6 +57,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                                     Colors.brown,
                                     Colors.brown.shade800
                                   ])),
+                          child: _VideoPlayer(),
                         ),
 
                         SizedBox(height: 10),
@@ -76,7 +79,6 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                         SizedBox(
                           height: 33,
                           width: 183,
-
                           // Bouton register
                           child: ElevatedButton(
                             onPressed: () {
@@ -159,6 +161,49 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _VideoPlayer extends StatefulWidget {
+  @override
+  _VideoPlayerState createState() => _VideoPlayerState();
+}
+
+class _VideoPlayerState extends State<_VideoPlayer> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset('assets/videos/koudmen_1.mp4');
+    _initializeVideoPlayerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+        future: _initializeVideoPlayerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
+            );
+          } else {
+            // Affiche une icône de chargement
+            return CircularProgressIndicator();
+          }
+        },
       ),
     );
   }
