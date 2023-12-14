@@ -75,7 +75,7 @@ class Register6KoudmenPage extends StatelessWidget {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: purpleCol,
+                              backgroundColor: purpleCol,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9),
                               ),
@@ -101,6 +101,5 @@ class Register6KoudmenPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

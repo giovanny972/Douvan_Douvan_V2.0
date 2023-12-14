@@ -1,7 +1,9 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
-import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase1%20Koudment.dart';
+import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase1%20Koudmen.dart';
 
 class Register4KoudmenPage extends StatelessWidget {
   const Register4KoudmenPage({Key? key}) : super(key: key);
@@ -102,6 +104,5 @@ class Register4KoudmenPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

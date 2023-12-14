@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen inscription/register_6_phase1 Koudment.dart';
+import 'package:koudmen/screens/Koudmen%20inscription/register_6_phase1%20Koudmen.dart';
 
 class Register5KoudmenPage extends StatelessWidget {
   const Register5KoudmenPage({Key? key}) : super(key: key);
@@ -101,6 +101,5 @@ class Register5KoudmenPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 
@@ -37,16 +39,13 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
         initialValue: false,
         validator: (value) {
           // On vérifie s'il est obligatoire ou pas
-          if (widget.required_ == false || widget.required_ == null) {
+          if (widget.required_ == false) {
             return null;
           }
           // SI le champ est obligatoire et n'et pas rempli, on affiche un erreur
           if (value == false) {
             // Texte par défaut : Veuillez cocher cette case
-            if (widget.erreur == null) {
-              return 'Veuillez cocher cette case';
-            } else
-              return widget.erreur;
+            return widget.erreur;
           }
           return null;
         },
