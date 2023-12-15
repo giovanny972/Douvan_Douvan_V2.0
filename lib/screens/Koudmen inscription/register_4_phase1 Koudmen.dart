@@ -1,12 +1,19 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
-import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase1%20Koudmen.dart';
+import 'package:koudmen/screens/Koudmen inscription/register_5_phase1 Koudmen.dart';
+import 'package:koudmen/size_config.dart';
 
-class Register4KoudmenPage extends StatelessWidget {
-  const Register4KoudmenPage({Key? key}) : super(key: key);
+class Register4KoudmenPage extends StatefulWidget {
+  const Register4KoudmenPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _Register4KoudmenPageState createState() => _Register4KoudmenPageState();
+}
+
+class _Register4KoudmenPageState extends State<Register4KoudmenPage> {
+  String selectedImage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,6 @@ class Register4KoudmenPage extends StatelessWidget {
           child: Stack(
             children: [
               // Background
-
               Container(
                 height: 300,
                 decoration: BoxDecoration(
@@ -38,34 +44,46 @@ class Register4KoudmenPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     logoKarisko,
-                    Container(
-                      width: 200,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/image_application_1.png'),
-                          fit: BoxFit.cover,
-                        ),
+                    SizedBox(height: propHeight(20)),
+                    GestureDetector(
+                      onTap: () {
+                        // Lorsque l'utilisateur clique sur la première image
+                        setState(() {
+                          selectedImage = 'image1';
+                        });
+                      },
+                      child: Image.asset(
+                        'assets/images/image_application_1.png',
+                        width: 200,
+                        height: 200,
+                        color: selectedImage == 'image1'
+                            ? const Color.fromARGB(41, 33, 149, 243)
+                            : null,
                       ),
                     ),
-                    Container(
-                      width: 200,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/image_application_2.png'),
-                          fit: BoxFit.cover,
-                        ),
+                    SizedBox(height: propHeight(20)),
+                    GestureDetector(
+                      onTap: () {
+                        // Lorsque l'utilisateur clique sur la première image
+                        setState(() {
+                          selectedImage = 'image2';
+                        });
+                      },
+                      child: Image.asset(
+                        'assets/images/image_application_2.png',
+                        width: 200,
+                        height: 200,
+                        color: selectedImage == 'image2'
+                            ? Color.fromARGB(41, 33, 149, 243)
+                            : null,
                       ),
                     ),
+                    SizedBox(height: propHeight(20)),
                     Column(
                       children: [
                         SizedBox(
                           height: 33,
                           width: 183,
-
                           // Bouton register
                           child: ElevatedButton(
                             onPressed: () {
@@ -73,12 +91,15 @@ class Register4KoudmenPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Register5KoudmenPage(),
+                                  builder: (context) => Register5KoudmenPage(
+                                    // Give the form values to the 2nd page
+                                    previousFormValues: selectedImage,
+                                  ),
                                 ),
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: purpleCol,
+                              backgroundColor: purpleCol,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9),
                               ),
@@ -86,10 +107,10 @@ class Register4KoudmenPage extends StatelessWidget {
                             child: Text(
                               "Suivant",
                               style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.normal,
-                              ),
+                                  fontSize: 14,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white),
                             ),
                           ),
                         ),

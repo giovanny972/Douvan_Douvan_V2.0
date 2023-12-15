@@ -158,7 +158,6 @@ class _Register1PageState extends State<Register1Page> {
                                       children: [
                                         // Full name
                                         CustomTextField(
-                                          maxLength: 10,
                                           labelText: "test",
                                           onSaved: (String value) {
                                             fullName = value;
@@ -177,7 +176,6 @@ class _Register1PageState extends State<Register1Page> {
 
                                         // First name
                                         CustomTextField(
-                                          maxLength: 10,
                                           labelText: "",
                                           onSaved: (String value) {
                                             firstName = value;
@@ -196,7 +194,6 @@ class _Register1PageState extends State<Register1Page> {
 
                                         // Email
                                         CustomTextField(
-                                          maxLength: 10,
                                           labelText: "test",
                                           onSaved: (String value) {
                                             email = value;
@@ -215,7 +212,6 @@ class _Register1PageState extends State<Register1Page> {
 
                                         // Email confirmation
                                         CustomTextField(
-                                          maxLength: 10,
                                           labelText: "test",
                                           onSaved: (String value) {
                                             confirmEmail = value;
@@ -233,7 +229,6 @@ class _Register1PageState extends State<Register1Page> {
                                         SizedBox(height: 10),
                                         // phone
                                         CustomTextField(
-                                          maxLength: 10,
                                           labelText: "",
                                           onSaved: (String value) {
                                             phone = value;

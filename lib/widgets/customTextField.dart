@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import '../constantes.dart';
+import 'package:koudmen/constantes.dart';
 
 class CustomTextField extends StatefulWidget {
   final String labelText;
@@ -10,7 +10,7 @@ class CustomTextField extends StatefulWidget {
   final String errorMessage;
   final void Function(String) onSaved;
   final Widget icon;
-  final int maxLength;
+  //final int maxLength;
   late String value;
 
   CustomTextField({
@@ -20,7 +20,7 @@ class CustomTextField extends StatefulWidget {
     this.obscureText = false,
     required this.errorMessage,
     required this.icon,
-    required this.maxLength,
+    //required this.maxLength,
   });
 
   @override
@@ -29,6 +29,13 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -51,9 +58,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
       },
       obscureText: widget.obscureText,
       cursorColor: lightGreyCol,
-      maxLength: widget.maxLength,
+      //maxLength: widget.maxLength,
       style: TextStyle(
-          color: lightGreyCol, fontFamily: 'Montserrat', fontSize: 14),
+        color: lightGreyCol,
+        fontFamily: 'Montserrat',
+        fontSize: 14,
+      ),
       decoration: InputDecoration(
         prefixIcon: widget.icon,
         hintText: widget.hintText,
@@ -75,5 +85,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   String get value {
     return widget.value;
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

@@ -3,7 +3,8 @@ import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen%20inscription/register_6_phase1%20Koudmen.dart';
 
 class Register5KoudmenPage extends StatelessWidget {
-  const Register5KoudmenPage({Key? key}) : super(key: key);
+  const Register5KoudmenPage({Key? key, required String previousFormValues})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,7 @@ class Register5KoudmenPage extends StatelessWidget {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: purpleCol,
+                              backgroundColor: purpleCol,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9),
                               ),

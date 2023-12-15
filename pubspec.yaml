@@ -36,10 +36,11 @@ dependencies:
   chips_choice: ^2.0.1
   circular_countdown_timer: ^0.2.0
   google_fonts: ^3.0.1
-  firebase_core: ^2.8.0
+  package_info_plus: ^3.0.0
+  #firebase_core: ^2.8.0
   # firebase_auth_web: ^5.4.0
-  firebase_auth: ^4.4.1
-  cloud_firestore: ^4.4.5
+  #firebase_auth: ^4.4.1
+  #cloud_firestore: ^4.4.5
   provider: ^6.0.3
   flutter_spinkit: ^5.1.0
   intl: ^0.18.1
@@ -74,7 +75,7 @@ flutter:
     - assets/images/image_application_1.png
     - assets/icons/
     - assets/images/
-    - assets/videos/
+    - assets/videos/koudmen_douvan-douvan_app (720p).mp4
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

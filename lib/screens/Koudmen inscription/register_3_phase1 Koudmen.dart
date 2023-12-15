@@ -30,7 +30,7 @@ class Register3KoudmenPage extends StatelessWidget {
                 SizedBox(
                   height: propHeight(41),
                   width: propWidth(284),
-                  child: register2StateImage,
+                  child: register3StateImage,
                 ),
 
                 // Space
@@ -41,8 +41,8 @@ class Register3KoudmenPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SizedBox(
-                    height: propHeight(138),
-                    width: propWidth(320),
+                    height: propHeight(128),
+                    width: propWidth(310),
                     child: TextField(
                       decoration: InputDecoration(
                         fillColor: Color(0xFFECECEC),
@@ -82,7 +82,7 @@ class Register3KoudmenPage extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        primary: purpleCol,
+                        backgroundColor: purpleCol,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
@@ -90,10 +90,10 @@ class Register3KoudmenPage extends StatelessWidget {
                       child: Text(
                         "Suivant",
                         style: TextStyle(
-                          fontSize: propHeight(14),
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.normal,
-                        ),
+                            fontSize: propHeight(14),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white),
                       )),
                 ),
               ],
@@ -119,7 +119,7 @@ class _CardSwiperState extends State<CardSwiper> {
     int questionCount = 3;
     return Center(
       child: SizedBox(
-        height: 200, // card height
+        height: 170, // card height
         child: PageView.builder(
           itemCount: questionCount,
           controller: PageController(viewportFraction: 0.7),
@@ -171,7 +171,7 @@ class QuestionCard extends StatelessWidget {
               ),
               Text(questionsList[i]),
               Text(
-                "${i + 1} sur ${questionCount}",
+                "${i + 1} sur $questionCount",
                 style: TextStyle(fontSize: propHeight(8)),
               ),
             ],

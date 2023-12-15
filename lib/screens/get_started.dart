@@ -70,7 +70,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                             },
                             style: ElevatedButton.styleFrom(
                               elevation: 0,
-                              primary: purpleCol,
+                              backgroundColor: purpleCol,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(9.5),
@@ -81,9 +81,9 @@ class _GetStartedPageState extends State<GetStartedPage> {
                             child: Text(
                               "Commencer",
                               style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Montserrat',
-                              ),
+                                  fontSize: 14,
+                                  fontFamily: 'Montserrat',
+                                  color: Colors.white),
                             )),
                       ),
                     ),

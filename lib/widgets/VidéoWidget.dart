@@ -14,7 +14,8 @@ class _VideoPlayerState extends State<_VideoPlayer> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/koudmen_1.mp4');
+    _controller = VideoPlayerController.asset(
+        'assets/videos/koudmen_douvan-douvan_app (720p).mp4');
     _initializeVideoPlayerFuture = _controller.initialize();
   }
 

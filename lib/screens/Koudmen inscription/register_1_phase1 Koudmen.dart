@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_2_phase1Koudmen.dart';
 import 'package:koudmen/size_config.dart';
-import 'package:koudmen/widgets/customCheckBox.dart';
 import 'package:koudmen/widgets/customTextField.dart';
 
 class Register1KoudmenPage extends StatefulWidget {
@@ -158,8 +157,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                       children: [
                                         // Full name
                                         CustomTextField(
-                                          maxLength: 10,
-                                          labelText: "",
+                                          labelText: "Nom",
                                           onSaved: (String value) {
                                             fullName = value;
                                           },
@@ -177,8 +175,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
 
                                         // First name
                                         CustomTextField(
-                                          maxLength: 10,
-                                          labelText: "",
+                                          labelText: "Prénom",
                                           onSaved: (String value) {
                                             firstName = value;
                                           },
@@ -196,8 +193,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
 
                                         // Email
                                         CustomTextField(
-                                          maxLength: 10,
-                                          labelText: "",
+                                          labelText: "Email",
                                           onSaved: (String value) {
                                             email = value;
                                           },
@@ -215,8 +211,8 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
 
                                         // Email confirmation
                                         CustomTextField(
-                                          maxLength: 10,
-                                          labelText: "",
+                                          labelText:
+                                              "Entrer à nouveau l'e-mail",
                                           onSaved: (String value) {
                                             confirmEmail = value;
                                           },
@@ -233,8 +229,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                         SizedBox(height: 10),
                                         // phone
                                         CustomTextField(
-                                          maxLength: 10,
-                                          labelText: "",
+                                          labelText: "Téléphone",
                                           onSaved: (String value) {
                                             phone = value;
                                           },
@@ -246,15 +241,6 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                             color: formIconCol,
                                           ),
                                         ),
-                                        SizedBox(height: propHeight(10)),
-                                        CustomCheckBox(
-                                            erreur: "",
-                                            onSaved: (value) {
-                                              confirmEmail = value as String;
-                                            },
-                                            required_: true,
-                                            title:
-                                                "Je certifie sur l'honneur d'être en capacité juridique pour représenter la structure."),
                                         // Space
                                         SizedBox(height: propHeight(10)),
 
@@ -274,10 +260,11 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                           child: ElevatedButton(
                                               onPressed: () async {
                                                 // Check if all fields are complete and if email are the same
-                                                if (_formKey.currentState!
-                                                    .validate()) {
+                                                if (_formKey.currentState
+                                                        ?.validate() ??
+                                                    false) {
                                                   // Save values to send
-                                                  _formKey.currentState!.save();
+                                                  _formKey.currentState?.save();
 
                                                   if (confirmEmail == email) {
                                                     setState(() {
@@ -318,7 +305,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                               },
                                               style: ElevatedButton.styleFrom(
                                                 elevation: 0,
-                                                primary: purpleCol,
+                                                backgroundColor: purpleCol,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(5),
@@ -327,10 +314,11 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                               child: Text(
                                                 "Suivant",
                                                 style: TextStyle(
-                                                  fontSize: propHeight(14),
-                                                  fontFamily: 'Montserrat',
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+                                                    fontSize: propHeight(14),
+                                                    fontFamily: 'Montserrat',
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.white),
                                               )),
                                         ),
                                       ],

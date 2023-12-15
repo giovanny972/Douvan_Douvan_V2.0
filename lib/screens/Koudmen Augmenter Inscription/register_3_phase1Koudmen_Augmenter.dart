@@ -73,7 +73,7 @@ class Register3Page extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        primary: purpleCol,
+                        backgroundColor: purpleCol,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ),
@@ -162,7 +162,7 @@ class QuestionCard extends StatelessWidget {
               ),
               Text(questionsList[i]),
               Text(
-                "${i + 1} sur ${questionCount}",
+                "${i + 1} sur $questionCount",
                 style: TextStyle(fontSize: propHeight(8)),
               ),
             ],

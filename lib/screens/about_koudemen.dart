@@ -91,7 +91,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: purpleCol,
+                              backgroundColor: purpleCol,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9),
                               ),
@@ -99,10 +99,10 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                             child: Text(
                               "Inscription Koudmen",
                               style: TextStyle(
-                                fontSize: 12,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.normal,
-                              ),
+                                  fontSize: 11,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white),
                             ),
                           ),
                         ),
@@ -124,7 +124,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: purpleCol,
+                              backgroundColor: purpleCol,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9),
                               ),
@@ -133,10 +133,10 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                               child: Text(
                                 "Inscription Koudmen.A",
                                 style: TextStyle(
-                                  fontSize: 12,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.normal,
-                                ),
+                                    fontSize: 11,
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white),
                               ),
                             ),
                           ),

@@ -138,8 +138,7 @@ class _Register2FormState extends State<Register2Form> {
 
                           // Adress
                           CustomTextField(
-                            maxLength: 10,
-                            labelText: "",
+                            labelText: "Adresse",
                             onSaved: (String value) {
                               adress = value;
                             },
@@ -157,8 +156,7 @@ class _Register2FormState extends State<Register2Form> {
 
                           // City
                           CustomTextField(
-                            maxLength: 10,
-                            labelText: "",
+                            labelText: "Ville",
                             onSaved: (String value) {
                               city = value;
                             },
@@ -177,8 +175,7 @@ class _Register2FormState extends State<Register2Form> {
 
                           // Zip Code
                           CustomTextField(
-                            maxLength: 10,
-                            labelText: "",
+                            labelText: "Code Postale",
                             onSaved: (String value) {
                               zipCode = value;
                             },
@@ -191,8 +188,7 @@ class _Register2FormState extends State<Register2Form> {
                           SizedBox(height: propHeight(10)),
                           // Phone
                           CustomTextField(
-                            maxLength: 10,
-                            labelText: "",
+                            labelText: "Téléphone",
                             onSaved: (String value) {
                               phone = value;
                             },
@@ -246,7 +242,7 @@ class _Register2FormState extends State<Register2Form> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0,
-                                  primary: purpleCol,
+                                  backgroundColor: purpleCol,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5),
                                   ),
@@ -254,10 +250,10 @@ class _Register2FormState extends State<Register2Form> {
                                 child: Text(
                                   "Suivant",
                                   style: TextStyle(
-                                    fontSize: propHeight(14),
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                                      fontSize: propHeight(14),
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.white),
                                 )),
                           ),
                         ],
