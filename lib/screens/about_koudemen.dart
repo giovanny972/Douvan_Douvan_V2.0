@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
 import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_1_phase1Koudmen_Augmenter.dart';
-import 'dart:async' show Future;
 import 'package:video_player/video_player.dart';
+import 'dart:async' show Future;
 
 class AboutKoudmenPage extends StatefulWidget {
   AboutKoudmenPage({Key? key}) : super(key: key);
@@ -46,22 +46,11 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                       children: [
                         // Vidéo
                         Container(
-                          height: size.height * 0.25,
+                          height: size.height * 0.26,
                           width: size.width * 0.8,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Colors.brown,
-                                    Colors.brown.shade800
-                                  ])),
                           child: _VideoPlayer(),
                         ),
-
                         SizedBox(height: 10),
-
                         // Text description
                         Text(
                           "Découvrez Koudmen Augmenté",
@@ -173,13 +162,18 @@ class _VideoPlayer extends StatefulWidget {
 
 class _VideoPlayerState extends State<_VideoPlayer> {
   late VideoPlayerController _controller;
+  // ignore: unused_field
   late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/koudmen_1.mp4');
-    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller = VideoPlayerController.asset('assets/videos/koudmen_1.mov');
+    _initializeVideoPlayerFuture = _controller.initialize().then((_) {
+      print("Video initialization successful");
+    }).catchError((error) {
+      print("Error initializing video: $error");
+    });
   }
 
   @override
@@ -191,19 +185,29 @@ class _VideoPlayerState extends State<_VideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FutureBuilder(
-        future: _initializeVideoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
-            );
-          } else {
-            // Affiche une icône de chargement
-            return CircularProgressIndicator();
-          }
-        },
+      // Vous pouvez définir la hauteur de la vidéo directement ici
+      height: 300,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          VideoPlayer(_controller),
+          Center(
+            child: IconButton(
+              icon: Icon(
+                _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+              ),
+              onPressed: () {
+                setState(() {
+                  if (_controller.value.isPlaying) {
+                    _controller.pause();
+                  } else {
+                    _controller.play();
+                  }
+                });
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

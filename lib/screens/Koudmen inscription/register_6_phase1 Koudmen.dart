@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
+import 'package:koudmen/screens/Koudmen%20inscription/register_4_phase1%20Koudmen.dart';
+import 'package:koudmen/size_config.dart';
+import 'package:koudmen/screens/Koudmen inscription/register_7_phase1 Koudmen.dart';
 
-class Register6KoudmenPage extends StatelessWidget {
-  const Register6KoudmenPage({Key? key}) : super(key: key);
+class Register6KoudmenPage extends StatefulWidget {
+  final FormData formData;
+  const Register6KoudmenPage({
+    Key? key,
+    required this.formData,
+  }) : super(key: key);
+
+  @override
+  _Register6KoudmenPageState createState() => _Register6KoudmenPageState();
+}
+
+class _Register6KoudmenPageState extends State<Register6KoudmenPage> {
+  String selectedImage = '';
 
   @override
   Widget build(BuildContext context) {
+    print("Received Data: ${widget.formData}");
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Stack(
             children: [
               // Background
-
               Container(
                 height: 300,
                 decoration: BoxDecoration(
@@ -35,43 +48,60 @@ class Register6KoudmenPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     logoKarisko,
-                    Container(
-                      width: 200,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/image_application_5.png'),
-                          fit: BoxFit.cover,
-                        ),
+                    SizedBox(height: propHeight(20)),
+                    GestureDetector(
+                      onTap: () {
+                        // Lorsque l'utilisateur clique sur la première image
+                        setState(() {
+                          selectedImage = 'image5';
+                        });
+                      },
+                      child: Image.asset(
+                        'assets/images/image_application_5.png',
+                        width: 200,
+                        height: 200,
+                        color: selectedImage == 'image5'
+                            ? const Color.fromARGB(41, 33, 149, 243)
+                            : null,
                       ),
                     ),
-                    Container(
-                      width: 200,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/image_application_6.png'),
-                          fit: BoxFit.cover,
-                        ),
+                    SizedBox(height: propHeight(20)),
+                    GestureDetector(
+                      onTap: () {
+                        // Lorsque l'utilisateur clique sur la première image
+                        setState(() {
+                          selectedImage = 'image6';
+                        });
+                      },
+                      child: Image.asset(
+                        'assets/images/image_application_6.png',
+                        width: 200,
+                        height: 200,
+                        color: selectedImage == 'image6'
+                            ? Color.fromARGB(41, 33, 149, 243)
+                            : null,
                       ),
                     ),
+                    SizedBox(height: propHeight(20)),
                     Column(
                       children: [
                         SizedBox(
                           height: 33,
                           width: 183,
-
                           // Bouton register
                           child: ElevatedButton(
                             onPressed: () {
+                              FormData formData = FormData(
+                                selectedImage: selectedImage,
+                              );
+                              print("Form Data: $formData");
+                              print("Selected Image: $selectedImage");
                               // Redirection to another page
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Register1KoudmenPage(),
-                                ),
+                                    builder: (context) => Register7KoudmenPage(
+                                        formData: formData)),
                               );
                             },
                             style: ElevatedButton.styleFrom(
@@ -83,10 +113,10 @@ class Register6KoudmenPage extends StatelessWidget {
                             child: Text(
                               "Suivant",
                               style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.normal,
-                              ),
+                                  fontSize: 14,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white),
                             ),
                           ),
                         ),

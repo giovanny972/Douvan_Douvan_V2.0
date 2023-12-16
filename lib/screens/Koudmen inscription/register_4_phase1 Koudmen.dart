@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen inscription/register_5_phase1 Koudmen.dart';
+import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase1%20Koudmen.dart';
 import 'package:koudmen/size_config.dart';
 
 class Register4KoudmenPage extends StatefulWidget {
-  const Register4KoudmenPage({
-    Key? key,
-  }) : super(key: key);
+  const Register4KoudmenPage({Key? key}) : super(key: key);
 
   @override
   _Register4KoudmenPageState createState() => _Register4KoudmenPageState();
+}
+
+class FormData {
+  late final String selectedImage;
+
+  FormData({required this.selectedImage});
 }
 
 class _Register4KoudmenPageState extends State<Register4KoudmenPage> {
@@ -64,7 +68,7 @@ class _Register4KoudmenPageState extends State<Register4KoudmenPage> {
                     SizedBox(height: propHeight(20)),
                     GestureDetector(
                       onTap: () {
-                        // Lorsque l'utilisateur clique sur la première image
+                        // Lorsque l'utilisateur clique sur la deuxième image
                         setState(() {
                           selectedImage = 'image2';
                         });
@@ -87,14 +91,20 @@ class _Register4KoudmenPageState extends State<Register4KoudmenPage> {
                           // Bouton register
                           child: ElevatedButton(
                             onPressed: () {
-                              // Redirection to another page
+                              // Créer une instance de FormData avec les données actuelles
+                              FormData formData = FormData(
+                                selectedImage: selectedImage,
+                              );
+                              // Imprimer les données et l'image sélectionnée
+                              print("Form Data: $formData");
+                              print("Selected Image: $selectedImage");
+
+                              // Redirection vers une autre page avec les données
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Register5KoudmenPage(
-                                    // Give the form values to the 2nd page
-                                    previousFormValues: selectedImage,
-                                  ),
+                                  builder: (context) =>
+                                      Register5KoudmenPage(formData: formData),
                                 ),
                               );
                             },

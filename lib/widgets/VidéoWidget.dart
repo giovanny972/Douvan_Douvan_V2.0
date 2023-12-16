@@ -14,9 +14,14 @@ class _VideoPlayerState extends State<_VideoPlayer> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(
-        'assets/videos/koudmen_douvan-douvan_app (720p).mp4');
-    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller = VideoPlayerController.asset('assets/videos/koudmen_1.mov');
+    _initializeVideoPlayerFuture = _controller.initialize().then((_) {
+      // Ajouter des logs de débogage ici
+      print("Video initialization successful");
+    }).catchError((error) {
+      // Ajouter des logs de débogage ici pour afficher l'erreur
+      print("Error initializing video: $error");
+    });
   }
 
   @override

@@ -134,7 +134,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
 
                                         //Box Text
                                         Text(
-                                          "Guide du Koudmen Augmenter",
+                                          "Guide du Koudmen",
                                           style: TextStyle(
                                               fontSize: propHeight(12),
                                               color: darkGreenCol,

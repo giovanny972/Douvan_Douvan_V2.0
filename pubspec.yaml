@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  video_player: ^2.6.0
+  video_player: ^2.8.1
   chewie: ^1.3.2
   # path_provider: ^2.2.3
 
@@ -75,7 +75,7 @@ flutter:
     - assets/images/image_application_1.png
     - assets/icons/
     - assets/images/
-    - assets/videos/koudmen_douvan-douvan_app (720p).mp4
+    - assets/videos/koudmen_1.mov
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
