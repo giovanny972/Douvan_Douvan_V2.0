@@ -1,15 +1,15 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/custom_icons.dart';
-import 'package:koudmen/screens/register_3_phase1.dart';
 import 'package:koudmen/size_config.dart';
 import 'package:koudmen/widgets/customTextField.dart';
+import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_3_phase1Koudmen_Augmenter.dart';
 
-class Register2Page extends StatelessWidget {
+class Register2KoudmenAugmenterPage extends StatelessWidget {
   final String previousFormValues;
-  const Register2Page({Key? key, required this.previousFormValues})
+  const Register2KoudmenAugmenterPage(
+      {Key? key, required this.previousFormValues})
       : super(key: key);
 
   @override
@@ -40,7 +40,7 @@ class Register2Page extends StatelessWidget {
               SizedBox(height: propHeight(20)),
 
               Expanded(
-                  child: Register2Form(
+                  child: Register2KoudmenAugmenterForm(
                 previousFormValues: previousFormValues,
               ))
             ],
@@ -51,15 +51,18 @@ class Register2Page extends StatelessWidget {
   }
 }
 
-class Register2Form extends StatefulWidget {
+class Register2KoudmenAugmenterForm extends StatefulWidget {
   final String previousFormValues;
-  Register2Form({Key? key, required this.previousFormValues}) : super(key: key);
+  Register2KoudmenAugmenterForm({Key? key, required this.previousFormValues})
+      : super(key: key);
 
   @override
-  _Register2FormState createState() => _Register2FormState();
+  _Register2KoudmenAugmenterFormState createState() =>
+      _Register2KoudmenAugmenterFormState();
 }
 
-class _Register2FormState extends State<Register2Form> {
+class _Register2KoudmenAugmenterFormState
+    extends State<Register2KoudmenAugmenterForm> {
   /// Fonction permettant de soumettre un formulaire
   Future<String> sendForm(
     String structureName,
@@ -145,7 +148,7 @@ class _Register2FormState extends State<Register2Form> {
                         children: [
                           // Name of the structure
                           CustomTextField(
-                              labelText: "",
+                              labelText: "Nom de la structure",
                               onSaved: (String value) {
                                 structureName = value;
                               },
@@ -161,7 +164,7 @@ class _Register2FormState extends State<Register2Form> {
 
                           // Adress
                           CustomTextField(
-                            labelText: "",
+                            labelText: "Adresse",
                             onSaved: (String value) {
                               adress = value;
                             },
@@ -178,7 +181,7 @@ class _Register2FormState extends State<Register2Form> {
 
                           // City
                           CustomTextField(
-                            labelText: "",
+                            labelText: "Ville",
                             onSaved: (String value) {
                               city = value;
                             },
@@ -196,7 +199,7 @@ class _Register2FormState extends State<Register2Form> {
 
                           // Zip Code
                           CustomTextField(
-                            labelText: "",
+                            labelText: "Code Postal",
                             onSaved: (String value) {
                               zipCode = value;
                             },
@@ -209,7 +212,7 @@ class _Register2FormState extends State<Register2Form> {
                           SizedBox(height: 10),
                           // Siret number
                           CustomTextField(
-                            labelText: "",
+                            labelText: "Numéro de Siret",
                             onSaved: (String value) {
                               siretNumber = value;
                             },
@@ -225,7 +228,7 @@ class _Register2FormState extends State<Register2Form> {
                           SizedBox(height: propHeight(10)),
                           // Phone
                           CustomTextField(
-                            labelText: "",
+                            labelText: "Téléphone de la structure",
                             onSaved: (String value) {
                               structurephone = value;
                             },
@@ -270,7 +273,8 @@ class _Register2FormState extends State<Register2Form> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => Register3Page(
+                                          builder: (context) =>
+                                              Register3KoudmenAugmenterPage(
                                             // Give the form values to the 2nd page
                                             previousFormValues: formValues,
                                           ),
@@ -287,10 +291,10 @@ class _Register2FormState extends State<Register2Form> {
                                 child: Text(
                                   "Suivant",
                                   style: TextStyle(
-                                    fontSize: propHeight(14),
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                                      fontSize: propHeight(14),
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.white),
                                 )),
                           ),
                         ],

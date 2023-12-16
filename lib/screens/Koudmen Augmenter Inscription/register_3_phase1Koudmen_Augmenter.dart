@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
+import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_4_phase1 Koudmen_Augmenter.dart';
 
-class Register3Page extends StatelessWidget {
+class Register3KoudmenAugmenterPage extends StatelessWidget {
   final String previousFormValues;
-  const Register3Page({Key? key, required this.previousFormValues})
+  const Register3KoudmenAugmenterPage(
+      {Key? key, required this.previousFormValues})
       : super(key: key);
 
   @override
@@ -29,7 +31,7 @@ class Register3Page extends StatelessWidget {
                 SizedBox(
                   height: propHeight(41),
                   width: propWidth(284),
-                  child: register2StateImage,
+                  child: register3StateImage,
                 ),
 
                 // Space
@@ -40,8 +42,8 @@ class Register3Page extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SizedBox(
-                    height: propHeight(138),
-                    width: propWidth(320),
+                    height: propHeight(128),
+                    width: propWidth(310),
                     child: TextField(
                       decoration: InputDecoration(
                         fillColor: Color(0xFFECECEC),
@@ -50,7 +52,7 @@ class Register3Page extends StatelessWidget {
                             fontFamily: 'Montserrat',
                             fontSize: propHeight(10)),
                         hintText:
-                            "Écrivez 10 mots clés sur l'économie sociale et solidaire...",
+                            "Rédigez 10 mots clés sur l'Economie Sociale et Solidaire...",
                         filled: true,
                         border: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
@@ -70,7 +72,16 @@ class Register3Page extends StatelessWidget {
                   width: propWidth(183),
                   constraints: BoxConstraints(maxWidth: 300, minWidth: 100),
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Redirection to another page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Register4KoudmenAugmenterPage(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         backgroundColor: purpleCol,
@@ -81,10 +92,10 @@ class Register3Page extends StatelessWidget {
                       child: Text(
                         "Suivant",
                         style: TextStyle(
-                          fontSize: propHeight(14),
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.normal,
-                        ),
+                            fontSize: propHeight(14),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white),
                       )),
                 ),
               ],
@@ -110,7 +121,7 @@ class _CardSwiperState extends State<CardSwiper> {
     int questionCount = 3;
     return Center(
       child: SizedBox(
-        height: 200, // card height
+        height: 170, // card height
         child: PageView.builder(
           itemCount: questionCount,
           controller: PageController(viewportFraction: 0.7),
@@ -174,14 +185,14 @@ class QuestionCard extends StatelessWidget {
 }
 
 List questionsList = [
-  "Avez-vous déjà participé à une action dans le cadre de l'économie sociale et solidaire de type koudmen ?"
-      "Êtes-vous d'accord avec les principes fondamentaux de Koudmen augmenté ?"
-      "Êtes-vous d'accord avec la vision d'un destin commun partagé ?"
+  "Avez-vous déjà participé à une action dans l'économie sociale et solidaire de type koudmen ?",
+  "Êtes-vous d'accord avec les grands principes du Koudmen augmenté ?",
+  "Êtes-vous d'accord avec la vision d'un destin commun partagé ?"
 ];
 
 Map answersMap = {
-  "1": ["Oui", "Non", "Peut etre"],
-  "2": ["Oui", "Non", "Peut etre"],
+  "1": ["Oui", "Non", "Peut-etre"],
+  "2": ["Oui", "Non", "Peut-etre"],
   "3": ["Oui", "Non"]
 };
 

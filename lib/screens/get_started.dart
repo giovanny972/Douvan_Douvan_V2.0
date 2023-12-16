@@ -38,7 +38,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                       "Vous êtes dans l'automate\n Douvan-Douvan de\nKoudmen Augmenté",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: purpleCol,
                         fontSize: 18,
                         fontFamily: 'Montserrat',
                       ),

@@ -50,7 +50,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                           width: size.width * 0.8,
                           child: _VideoPlayer(),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 30),
                         // Text description
                         Text(
                           "Découvrez Koudmen Augmenté",
@@ -130,7 +130,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 50),
 
                         // Text register
                         Text(
@@ -171,6 +171,8 @@ class _VideoPlayerState extends State<_VideoPlayer> {
     _controller = VideoPlayerController.asset('assets/videos/koudmen_1.mov');
     _initializeVideoPlayerFuture = _controller.initialize().then((_) {
       print("Video initialization successful");
+      // Lancer automatiquement la vidéo
+      _controller.play();
     }).catchError((error) {
       print("Error initializing video: $error");
     });

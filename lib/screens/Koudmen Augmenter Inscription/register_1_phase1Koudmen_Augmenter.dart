@@ -1,19 +1,21 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/register_2_phase1.dart';
+import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_2_phase1Koudmen_Augmenter.dart';
 import 'package:koudmen/size_config.dart';
-import 'package:koudmen/widgets/customCheckBox.dart';
+// import 'package:koudmen/widgets/customCheckBox.dart';
 import 'package:koudmen/widgets/customTextField.dart';
 
 class Register1KoudmenAugmenterPage extends StatefulWidget {
   Register1KoudmenAugmenterPage({Key? key}) : super(key: key);
 
   @override
-  _Register1PageState createState() => _Register1PageState();
+  _Register1KoudmenAugmenterPageState createState() =>
+      _Register1KoudmenAugmenterPageState();
 }
 
-class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
+class _Register1KoudmenAugmenterPageState
+    extends State<Register1KoudmenAugmenterPage> {
   final _formKey = GlobalKey<FormState>();
 
   /// Fonction permettant de soumettre un formulaire
@@ -158,7 +160,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                       children: [
                                         // Full name
                                         CustomTextField(
-                                          labelText: "",
+                                          labelText: "Nom",
                                           onSaved: (String value) {
                                             fullName = value;
                                           },
@@ -176,7 +178,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
 
                                         // First name
                                         CustomTextField(
-                                          labelText: "",
+                                          labelText: "Prénom",
                                           onSaved: (String value) {
                                             firstName = value;
                                           },
@@ -194,7 +196,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
 
                                         // Email
                                         CustomTextField(
-                                          labelText: "",
+                                          labelText: "Email",
                                           onSaved: (String value) {
                                             email = value;
                                           },
@@ -212,7 +214,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
 
                                         // Email confirmation
                                         CustomTextField(
-                                          labelText: "",
+                                          labelText: "Re-enter Email",
                                           onSaved: (String value) {
                                             confirmEmail = value;
                                           },
@@ -229,7 +231,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                         SizedBox(height: 10),
                                         // phone
                                         CustomTextField(
-                                          labelText: "",
+                                          labelText: "Téléphone",
                                           onSaved: (String value) {
                                             phone = value;
                                           },
@@ -241,16 +243,16 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                             color: formIconCol,
                                           ),
                                         ),
-                                        SizedBox(height: propHeight(10)),
-                                        CustomCheckBox(
-                                            erreur: "",
-                                            onSaved: (value) {
-                                              confirmEmail = value as String;
-                                            },
-                                            required_: true,
-                                            title:
-                                                "Je certifie sur l'honneur être en capacité légale de représenter la structure"),
-                                        // Space
+                                        SizedBox(height: propHeight(5)),
+                                        // CustomCheckBox(
+                                        //     erreur: "",
+                                        //     onSaved: (value) {
+                                        //       confirmEmail = value as String;
+                                        //     },
+                                        //     required_: true,
+                                        //     title:
+                                        //         "Je certifie sur l'honneur être en capacité légale de représenter la structure"),
+                                        // // Space
                                         SizedBox(height: propHeight(10)),
 
                                         // Error message
@@ -259,7 +261,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                           key: UniqueKey(),
                                         ),
                                         // Space
-                                        SizedBox(height: propHeight(10)),
+                                        SizedBox(height: propHeight(0.5)),
 
                                         // Button Next
                                         Container(
@@ -293,7 +295,7 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                                         context,
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                              Register2Page(
+                                                              Register2KoudmenAugmenterPage(
                                                             // Give the form values to the 2nd page
                                                             previousFormValues:
                                                                 formValues,
@@ -319,10 +321,11 @@ class _Register1PageState extends State<Register1KoudmenAugmenterPage> {
                                               child: Text(
                                                 "Suivant",
                                                 style: TextStyle(
-                                                  fontSize: propHeight(14),
-                                                  fontFamily: 'Montserrat',
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+                                                    fontSize: propHeight(14),
+                                                    fontFamily: 'Montserrat',
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.white),
                                               )),
                                         ),
                                       ],
