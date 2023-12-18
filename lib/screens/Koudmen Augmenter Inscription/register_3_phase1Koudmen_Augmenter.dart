@@ -2,15 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
 import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_4_phase1 Koudmen_Augmenter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Register3KoudmenAugmenterPage extends StatelessWidget {
+  // ignore: unused_field
+  final TextEditingController _controller = TextEditingController();
   final String previousFormValues;
-  const Register3KoudmenAugmenterPage(
-      {Key? key, required this.previousFormValues})
-      : super(key: key);
+  final String question1Answer;
+  final String question2Answer;
+
+  Register3KoudmenAugmenterPage({
+    Key? key,
+    required this.previousFormValues,
+    required this.question1Answer,
+    required this.question2Answer,
+  }) : super(key: key);
+
+  void _addToFirestore(String keywords) {
+    CollectionReference collection =
+        FirebaseFirestore.instance.collection('Users');
+
+    collection.add({
+      'keywords': keywords,
+      'previousFormValues': previousFormValues,
+      'question1Answer': question1Answer,
+      'question2Answer': question2Answer,
+      // Ajoutez d'autres réponses aux questions précédentes
+    }).then((value) {
+      print('Données ajoutées avec succès à Firestore');
+    }).catchError((error) {
+      print('Erreur lors de l\'ajout des données à Firestore: $error');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _controller = TextEditingController();
+
     return Container(
       decoration: gradientBackgroundDecoration,
       child: SafeArea(
@@ -19,38 +47,33 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
           body: Center(
             child: Column(
               children: [
-                // Logo
                 SizedBox(
-                    height: propHeight(40),
-                    width: propWidth(50),
-                    child: logoKarisko),
-                // Space
+                  height: propHeight(40),
+                  width: propWidth(50),
+                  child: logoKarisko,
+                ),
                 SizedBox(height: propHeight(30)),
-
-                // State Bar
                 SizedBox(
                   height: propHeight(41),
                   width: propWidth(284),
                   child: register3StateImage,
                 ),
-
-                // Space
                 SizedBox(height: propHeight(20)),
-
                 CardSwiper(),
-
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SizedBox(
                     height: propHeight(128),
                     width: propWidth(310),
                     child: TextField(
+                      controller: _controller,
                       decoration: InputDecoration(
                         fillColor: Color(0xFFECECEC),
                         hintStyle: TextStyle(
-                            color: Color(0xFFABABAB),
-                            fontFamily: 'Montserrat',
-                            fontSize: propHeight(10)),
+                          color: Color(0xFFABABAB),
+                          fontFamily: 'Montserrat',
+                          fontSize: propHeight(10),
+                        ),
                         hintText:
                             "Rédigez 10 mots clés sur l'Economie Sociale et Solidaire...",
                         filled: true,
@@ -60,20 +83,19 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
                         ),
                       ),
                       keyboardType: TextInputType.multiline,
-                      minLines: 10, //Normal textInputField will be displayed
-                      maxLines:
-                          500, // when user presses enter it will adapt to it
+                      minLines: 10,
+                      maxLines: 500,
                     ),
                   ),
                 ),
-
-                // Button Next
                 Container(
                   width: propWidth(183),
                   constraints: BoxConstraints(maxWidth: 300, minWidth: 100),
                   child: ElevatedButton(
-                      onPressed: () {
-                        // Redirection to another page
+                    onPressed: () {
+                      String keywords = _controller.text;
+                      if (keywords.isNotEmpty) {
+                        _addToFirestore(keywords);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -81,22 +103,27 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
                                 Register4KoudmenAugmenterPage(),
                           ),
                         );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        backgroundColor: purpleCol,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
+                      } else {
+                        print('Veuillez entrer des mots-clés');
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      backgroundColor: purpleCol,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Text(
-                        "Suivant",
-                        style: TextStyle(
-                            fontSize: propHeight(14),
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white),
-                      )),
+                    ),
+                    child: Text(
+                      "Suivant",
+                      style: TextStyle(
+                        fontSize: propHeight(14),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.normal,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -121,7 +148,7 @@ class _CardSwiperState extends State<CardSwiper> {
     int questionCount = 3;
     return Center(
       child: SizedBox(
-        height: 170, // card height
+        height: 170,
         child: PageView.builder(
           itemCount: questionCount,
           controller: PageController(viewportFraction: 0.7),

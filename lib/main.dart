@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/home.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(KoudmenApp());
 }
 
@@ -10,6 +13,13 @@ class KoudmenApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    if (Firebase.apps.isNotEmpty) {
+      // Firebase est connecté
+      print('Firebase est connecté');
+    } else {
+      // Firebase n'est pas connecté
+      print('Firebase n\'est pas connecté');
+    }
     return MaterialApp(
       color: blueCol,
       title: 'Koudmen',

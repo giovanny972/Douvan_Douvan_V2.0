@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "409443185122",
+    "project_id": "application-koudmen-v3",
+    "storage_bucket": "application-koudmen-v3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409443185122:android:4773806335ea45f43809bb",
+        "android_client_info": {
+          "package_name": "com.example.koudmen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlW1eC1hGSTGfHy70_koXgGqKiiaKbfKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -277,6 +277,8 @@ class _Register2KoudmenAugmenterFormState
                                               Register3KoudmenAugmenterPage(
                                             // Give the form values to the 2nd page
                                             previousFormValues: formValues,
+                                            question1Answer: '',
+                                            question2Answer: '',
                                           ),
                                         ));
                                   }
