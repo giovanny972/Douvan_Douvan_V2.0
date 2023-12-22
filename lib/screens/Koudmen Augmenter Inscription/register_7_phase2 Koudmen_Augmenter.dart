@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_4_phase1%20Koudmen_Augmenter.dart';
-import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_6_phase1%20Koudmen_Augmenter.dart';
+import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_4_phase2%20Koudmen_Augmenter.dart';
+import 'package:koudmen/screens/about_koudemen.dart';
 import 'package:koudmen/size_config.dart';
 
-class Register5KoudmenAugmenterPage extends StatefulWidget {
+class Register7KoudmenAugmenterPage extends StatefulWidget {
   final FormData2 formData2;
-  const Register5KoudmenAugmenterPage({Key? key, required this.formData2})
+  const Register7KoudmenAugmenterPage({Key? key, required this.formData2})
       : super(key: key);
 
   @override
-  _Register5KoudmenAugmenterPageState createState() =>
-      _Register5KoudmenAugmenterPageState();
+  _Register7KoudmenAugmenterPageState createState() =>
+      _Register7KoudmenAugmenterPageState();
 }
 
-class _Register5KoudmenAugmenterPageState
-    extends State<Register5KoudmenAugmenterPage> {
+class _Register7KoudmenAugmenterPageState
+    extends State<Register7KoudmenAugmenterPage> {
   String selectedImage = '';
 
   @override
@@ -52,14 +52,14 @@ class _Register5KoudmenAugmenterPageState
                       onTap: () {
                         // Lorsque l'utilisateur clique sur la première image
                         setState(() {
-                          selectedImage = 'image3';
+                          selectedImage = 'image7';
                         });
                       },
                       child: Image.asset(
-                        'assets/images/image_application_3.png',
+                        'assets/images/image_application_7.png',
                         width: 200,
                         height: 200,
-                        color: selectedImage == 'image3'
+                        color: selectedImage == 'image7'
                             ? const Color.fromARGB(41, 33, 149, 243)
                             : null,
                       ),
@@ -69,14 +69,14 @@ class _Register5KoudmenAugmenterPageState
                       onTap: () {
                         // Lorsque l'utilisateur clique sur la deuxième image
                         setState(() {
-                          selectedImage = 'image4';
+                          selectedImage = 'image8';
                         });
                       },
                       child: Image.asset(
-                        'assets/images/image_application_4.png',
+                        'assets/images/image_application_8.png',
                         width: 200,
                         height: 200,
-                        color: selectedImage == 'image4'
+                        color: selectedImage == 'image8'
                             ? Color.fromARGB(41, 33, 149, 243)
                             : null,
                       ),
@@ -102,9 +102,7 @@ class _Register5KoudmenAugmenterPageState
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      Register6KoudmenAugmenterPage(
-                                          formData2: formData2),
+                                  builder: (context) => AboutKoudmenPage(),
                                 ),
                               );
                             },
@@ -115,7 +113,7 @@ class _Register5KoudmenAugmenterPageState
                               ),
                             ),
                             child: Text(
-                              "Suivant",
+                              "Valider",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'Montserrat',

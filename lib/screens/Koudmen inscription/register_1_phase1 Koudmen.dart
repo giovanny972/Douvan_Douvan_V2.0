@@ -37,7 +37,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
     var size = MediaQuery.of(context).size;
 
     // Données formulaire
-    late String fullName, firstName, email, phone, confirmEmail;
+    late String fullName, firstName, email, structure, confirmEmail;
     String emailCheckError = "";
 
     return Container(
@@ -229,15 +229,15 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                         SizedBox(height: 10),
                                         // phone
                                         CustomTextField(
-                                          labelText: "Téléphone",
+                                          labelText: "Structure lié",
                                           onSaved: (String value) {
-                                            phone = value;
+                                            structure = value;
                                           },
                                           errorMessage:
                                               "Merci de remplir ce champ",
-                                          hintText: "Téléphone",
+                                          hintText: "Structure lié",
                                           icon: Icon(
-                                            Icons.phone,
+                                            Icons.home,
                                             color: formIconCol,
                                           ),
                                         ),
@@ -277,7 +277,7 @@ class _Register1KoudmenPageState extends State<Register1KoudmenPage> {
                                                             fullName,
                                                             firstName,
                                                             email,
-                                                            phone);
+                                                            structure);
                                                     print(formValues);
 
                                                     // Redirection to another page

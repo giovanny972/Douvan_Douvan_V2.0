@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_4_phase1%20Koudmen_Augmenter.dart';
-import 'package:koudmen/screens/about_koudemen.dart';
+import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_5_phase2%20Koudmen_Augmenter.dart';
 import 'package:koudmen/size_config.dart';
 
-class Register7KoudmenAugmenterPage extends StatefulWidget {
-  final FormData2 formData2;
-  const Register7KoudmenAugmenterPage({Key? key, required this.formData2})
-      : super(key: key);
+class Register4KoudmenAugmenterPage extends StatefulWidget {
+  const Register4KoudmenAugmenterPage({Key? key}) : super(key: key);
 
   @override
-  _Register7KoudmenAugmenterPageState createState() =>
-      _Register7KoudmenAugmenterPageState();
+  _Register4KoudmenAugmenterPageState createState() =>
+      _Register4KoudmenAugmenterPageState();
 }
 
-class _Register7KoudmenAugmenterPageState
-    extends State<Register7KoudmenAugmenterPage> {
+class FormData2 {
+  late final String selectedImage;
+
+  FormData2({required this.selectedImage});
+}
+
+class _Register4KoudmenAugmenterPageState
+    extends State<Register4KoudmenAugmenterPage> {
   String selectedImage = '';
 
   @override
@@ -52,14 +55,14 @@ class _Register7KoudmenAugmenterPageState
                       onTap: () {
                         // Lorsque l'utilisateur clique sur la première image
                         setState(() {
-                          selectedImage = 'image7';
+                          selectedImage = 'image1';
                         });
                       },
                       child: Image.asset(
-                        'assets/images/image_application_7.png',
+                        'assets/images/image_application_1.png',
                         width: 200,
                         height: 200,
-                        color: selectedImage == 'image7'
+                        color: selectedImage == 'image1'
                             ? const Color.fromARGB(41, 33, 149, 243)
                             : null,
                       ),
@@ -69,14 +72,14 @@ class _Register7KoudmenAugmenterPageState
                       onTap: () {
                         // Lorsque l'utilisateur clique sur la deuxième image
                         setState(() {
-                          selectedImage = 'image8';
+                          selectedImage = 'image2';
                         });
                       },
                       child: Image.asset(
-                        'assets/images/image_application_8.png',
+                        'assets/images/image_application_2.png',
                         width: 200,
                         height: 200,
-                        color: selectedImage == 'image8'
+                        color: selectedImage == 'image2'
                             ? Color.fromARGB(41, 33, 149, 243)
                             : null,
                       ),
@@ -91,6 +94,7 @@ class _Register7KoudmenAugmenterPageState
                           child: ElevatedButton(
                             onPressed: () {
                               // Créer une instance de FormData avec les données actuelles
+                              // ignore: unused_local_variable
                               FormData2 formData2 = FormData2(
                                 selectedImage: selectedImage,
                               );
@@ -102,7 +106,9 @@ class _Register7KoudmenAugmenterPageState
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => AboutKoudmenPage(),
+                                  builder: (context) =>
+                                      Register5KoudmenAugmenterPage(
+                                          formData2: formData2),
                                 ),
                               );
                             },
@@ -113,7 +119,7 @@ class _Register7KoudmenAugmenterPageState
                               ),
                             ),
                             child: Text(
-                              "Valider",
+                              "Suivant",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'Montserrat',

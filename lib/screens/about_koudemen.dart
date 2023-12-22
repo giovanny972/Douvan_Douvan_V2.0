@@ -3,6 +3,8 @@ import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
 import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_1_phase1Koudmen_Augmenter.dart';
 import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
+// ignore: unused_import
 import 'dart:async' show Future;
 
 class AboutKoudmenPage extends StatefulWidget {
@@ -46,10 +48,9 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                       children: [
                         // Vidéo
                         Container(
-                          height: size.height * 0.26,
-                          width: size.width * 0.8,
-                          child: _VideoPlayer(),
-                        ),
+                            height: size.height * 0.26,
+                            width: size.width * 0.8,
+                            child: _VideoPlayer()),
                         SizedBox(height: 30),
                         // Text description
                         Text(
@@ -162,54 +163,33 @@ class _VideoPlayer extends StatefulWidget {
 
 class _VideoPlayerState extends State<_VideoPlayer> {
   late VideoPlayerController _controller;
-  // ignore: unused_field
-  late Future<void> _initializeVideoPlayerFuture;
+  late ChewieController _chewieController;
 
   @override
   void initState() {
     super.initState();
     _controller = VideoPlayerController.asset('assets/videos/koudmen_1.mov');
-    _initializeVideoPlayerFuture = _controller.initialize().then((_) {
-      print("Video initialization successful");
-      // Lancer automatiquement la vidéo
-      _controller.play();
-    }).catchError((error) {
-      print("Error initializing video: $error");
-    });
+    _chewieController = ChewieController(
+      videoPlayerController: _controller,
+      aspectRatio: 16 / 9,
+      autoPlay: true,
+      looping: true,
+    );
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _chewieController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // Vous pouvez définir la hauteur de la vidéo directement ici
-      height: 300,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          VideoPlayer(_controller),
-          Center(
-            child: IconButton(
-              icon: Icon(
-                _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-              ),
-              onPressed: () {
-                setState(() {
-                  if (_controller.value.isPlaying) {
-                    _controller.pause();
-                  } else {
-                    _controller.play();
-                  }
-                });
-              },
-            ),
-          ),
-        ],
+      height: 500,
+      child: Chewie(
+        controller: _chewieController,
       ),
     );
   }

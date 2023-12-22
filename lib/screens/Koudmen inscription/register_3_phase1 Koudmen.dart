@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
-import 'package:koudmen/screens/Koudmen%20inscription/register_4_phase1%20Koudmen.dart';
+import 'package:koudmen/screens/Koudmen%20inscription/register_4_phase2%20Koudmen.dart';
 
 class Register3KoudmenPage extends StatelessWidget {
   final String previousFormValues;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase1%20Koudmen.dart';
+import 'package:koudmen/screens/Koudmen%20inscription/register_5_phase2%20Koudmen.dart';
 import 'package:koudmen/size_config.dart';
 
 class Register4KoudmenPage extends StatefulWidget {

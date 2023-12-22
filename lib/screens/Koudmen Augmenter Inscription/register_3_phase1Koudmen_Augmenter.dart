@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
-import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_4_phase1 Koudmen_Augmenter.dart';
+import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_4_phase2%20Koudmen_Augmenter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Register3KoudmenAugmenterPage extends StatelessWidget {
@@ -19,7 +19,7 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
   }) : super(key: key);
 
   void _addToFirestore(String keywords) {
-    CollectionReference collection =
+    CollectionReference<Object?> collection =
         FirebaseFirestore.instance.collection('Users');
 
     collection.add({
@@ -44,88 +44,91 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Center(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: propHeight(40),
-                  width: propWidth(50),
-                  child: logoKarisko,
-                ),
-                SizedBox(height: propHeight(30)),
-                SizedBox(
-                  height: propHeight(41),
-                  width: propWidth(284),
-                  child: register3StateImage,
-                ),
-                SizedBox(height: propHeight(20)),
-                CardSwiper(),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: SizedBox(
-                    height: propHeight(128),
-                    width: propWidth(310),
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        fillColor: Color(0xFFECECEC),
-                        hintStyle: TextStyle(
-                          color: Color(0xFFABABAB),
-                          fontFamily: 'Montserrat',
-                          fontSize: propHeight(10),
-                        ),
-                        hintText:
-                            "Rédigez 10 mots clés sur l'Economie Sociale et Solidaire...",
-                        filled: true,
-                        border: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: lightGreyCol),
-                        ),
-                      ),
-                      keyboardType: TextInputType.multiline,
-                      minLines: 10,
-                      maxLines: 500,
-                    ),
+          body: SingleChildScrollView(
+            // Ajout de SingleChildScrollView ici
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: propHeight(40),
+                    width: propWidth(50),
+                    child: logoKarisko,
                   ),
-                ),
-                Container(
-                  width: propWidth(183),
-                  constraints: BoxConstraints(maxWidth: 300, minWidth: 100),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      String keywords = _controller.text;
-                      if (keywords.isNotEmpty) {
-                        _addToFirestore(keywords);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                Register4KoudmenAugmenterPage(),
+                  SizedBox(height: propHeight(30)),
+                  SizedBox(
+                    height: propHeight(41),
+                    width: propWidth(284),
+                    child: register3StateImage,
+                  ),
+                  SizedBox(height: propHeight(20)),
+                  CardSwiper(),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SizedBox(
+                      height: propHeight(128),
+                      width: propWidth(310),
+                      child: TextField(
+                        controller: _controller,
+                        decoration: InputDecoration(
+                          fillColor: Color(0xFFECECEC),
+                          hintStyle: TextStyle(
+                            color: Color(0xFFABABAB),
+                            fontFamily: 'Montserrat',
+                            fontSize: propHeight(10),
                           ),
-                        );
-                      } else {
-                        print('Veuillez entrer des mots-clés');
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: purpleCol,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                    child: Text(
-                      "Suivant",
-                      style: TextStyle(
-                        fontSize: propHeight(14),
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.normal,
-                        color: Colors.white,
+                          hintText:
+                              "Rédigez 10 mots clés sur l'Economie Sociale et Solidaire...",
+                          filled: true,
+                          border: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(color: lightGreyCol),
+                          ),
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        minLines: 10,
+                        maxLines: 500,
                       ),
                     ),
                   ),
-                ),
-              ],
+                  Container(
+                    width: propWidth(183),
+                    constraints: BoxConstraints(maxWidth: 300, minWidth: 100),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        String keywords = _controller.text;
+                        if (keywords.isNotEmpty) {
+                          _addToFirestore(keywords);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  Register4KoudmenAugmenterPage(),
+                            ),
+                          );
+                        } else {
+                          print('Veuillez entrer des mots-clés');
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: purpleCol,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      child: Text(
+                        "Suivant",
+                        style: TextStyle(
+                          fontSize: propHeight(14),
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
