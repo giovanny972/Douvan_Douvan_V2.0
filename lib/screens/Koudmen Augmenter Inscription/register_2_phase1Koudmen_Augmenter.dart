@@ -8,8 +8,10 @@ import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_3_phase1K
 
 class Register2KoudmenAugmenterPage extends StatelessWidget {
   final String previousFormValues;
+  final String userId;
+
   const Register2KoudmenAugmenterPage(
-      {Key? key, required this.previousFormValues})
+      {Key? key, required this.previousFormValues, required this.userId})
       : super(key: key);
 
   @override
@@ -40,9 +42,11 @@ class Register2KoudmenAugmenterPage extends StatelessWidget {
               SizedBox(height: propHeight(20)),
 
               Expanded(
-                  child: Register2KoudmenAugmenterForm(
-                previousFormValues: previousFormValues,
-              ))
+                child: Register2KoudmenAugmenterForm(
+                  previousFormValues: previousFormValues,
+                  userId: userId,
+                ),
+              )
             ],
           ),
         ),
@@ -53,7 +57,9 @@ class Register2KoudmenAugmenterPage extends StatelessWidget {
 
 class Register2KoudmenAugmenterForm extends StatefulWidget {
   final String previousFormValues;
-  Register2KoudmenAugmenterForm({Key? key, required this.previousFormValues})
+  final String userId;
+  Register2KoudmenAugmenterForm(
+      {Key? key, required this.previousFormValues, required this.userId})
       : super(key: key);
 
   @override
@@ -82,7 +88,7 @@ class _Register2KoudmenAugmenterFormState
     decode["siretNumber"] = siretNumber;
     decode["structurephone"] = structurephone;
     decode["siretNumber"] = siretNumber;
-    decode["siretNumber"] = siretNumber;
+    decode["structureName"] = structureName;
     var res = jsonEncode(decode);
 
     print(decode);
@@ -148,12 +154,12 @@ class _Register2KoudmenAugmenterFormState
                         children: [
                           // Name of the structure
                           CustomTextField(
-                              labelText: "Nom de la structure",
+                              labelText: "Ouboutou de la structure",
                               onSaved: (String value) {
                                 structureName = value;
                               },
                               errorMessage: "Veuillez remplir ce champ",
-                              hintText: "Nom de la structure.",
+                              hintText: "Outoutou de la structure.",
                               icon: Icon(
                                 CustomIcons.gg_circle,
                                 color: formIconCol,
@@ -268,19 +274,22 @@ class _Register2KoudmenAugmenterFormState
                                         widget.previousFormValues);
 
                                     print(formValues);
+                                    print(widget.userId);
 
                                     // Redirection to another page
                                     Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              Register3KoudmenAugmenterPage(
-                                            // Give the form values to the 2nd page
-                                            previousFormValues: formValues,
-                                            question1Answer: '',
-                                            question2Answer: '',
-                                          ),
-                                        ));
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            Register3KoudmenAugmenterPage(
+                                          // Give the form values to the 2nd page
+                                          previousFormValues: formValues,
+                                          question1Answer: '',
+                                          question2Answer: '',
+                                          userId: widget.userId,
+                                        ),
+                                      ),
+                                    );
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(

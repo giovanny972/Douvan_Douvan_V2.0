@@ -1,84 +1,135 @@
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
 import 'package:koudmen/screens/Koudmen%20inscription/register_4_phase2%20Koudmen.dart';
 
 class Register3KoudmenPage extends StatelessWidget {
+  // ignore: unused_field
+  final TextEditingController _controller = TextEditingController();
   final String previousFormValues;
-  const Register3KoudmenPage({Key? key, required this.previousFormValues})
-      : super(key: key);
+  final String question1Answer;
+  final String question2Answer;
+  final String userId;
 
-  @override
+  Register3KoudmenPage({
+    Key? key,
+    required this.previousFormValues,
+    required this.question1Answer,
+    required this.question2Answer,
+    required this.userId,
+  }) : super(key: key);
+
+  void _addToFirestore(String keywords, String userId) {
+    Map<String, dynamic> previousFormData =
+        jsonDecode(previousFormValues); // Convertir la chaîne JSON en Map
+
+    CollectionReference<Object?> collection =
+        FirebaseFirestore.instance.collection('Users');
+
+    collection.doc(userId).set({
+      'userId': userId,
+      'keywords': keywords,
+      'nom': previousFormData['nom'],
+      'prenom': previousFormData['prenom'],
+      'email': previousFormData['email'],
+      'telephone': previousFormData['phone'],
+      'adresse': previousFormData['adress'],
+      'ville': previousFormData['city'],
+      'codePostal': previousFormData['zipCode'],
+      'structure lié': previousFormData['structure'],
+      'question1Answer': question1Answer,
+      'question2Answer': question2Answer,
+      // Ajoutez d'autres réponses aux questions précédentes
+    }).then((value) {
+      print('Données ajoutées avec succès à Firestore');
+    }).catchError((error) {
+      print('Erreur lors de l\'ajout des données à Firestore: $error');
+    });
+  }
+
   Widget build(BuildContext context) {
+    TextEditingController _controller = TextEditingController();
     return Container(
       decoration: gradientBackgroundDecoration,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Center(
-            child: Column(
-              children: [
-                // Logo
-                SizedBox(
+          body: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  // Logo
+                  SizedBox(
                     height: propHeight(40),
                     width: propWidth(50),
-                    child: logoKarisko),
-                // Space
-                SizedBox(height: propHeight(30)),
+                    child: logoKarisko,
+                  ),
+                  // Space
+                  SizedBox(height: propHeight(30)),
 
-                // State Bar
-                SizedBox(
-                  height: propHeight(41),
-                  width: propWidth(284),
-                  child: register3StateImage,
-                ),
+                  // State Bar
+                  SizedBox(
+                    height: propHeight(41),
+                    width: propWidth(284),
+                    child: register3StateImage,
+                  ),
 
-                // Space
-                SizedBox(height: propHeight(20)),
+                  // Space
+                  SizedBox(height: propHeight(20)),
 
-                CardSwiper(),
+                  CardSwiper(),
 
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: SizedBox(
-                    height: propHeight(128),
-                    width: propWidth(310),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        fillColor: Color(0xFFECECEC),
-                        hintStyle: TextStyle(
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SizedBox(
+                      height: propHeight(128),
+                      width: propWidth(310),
+                      child: TextField(
+                        controller: _controller,
+                        decoration: InputDecoration(
+                          fillColor: Color(0xFFECECEC),
+                          hintStyle: TextStyle(
                             color: Color(0xFFABABAB),
                             fontFamily: 'Montserrat',
-                            fontSize: propHeight(10)),
-                        hintText:
-                            "Rédigez 10 mots clés sur l'Economie Sociale et Solidaire...",
-                        filled: true,
-                        border: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: lightGreyCol),
+                            fontSize: propHeight(10),
+                          ),
+                          hintText:
+                              "Rédigez 10 mots clés sur l'Economie Sociale et Solidaire...",
+                          filled: true,
+                          border: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(color: lightGreyCol),
+                          ),
                         ),
+                        keyboardType: TextInputType.multiline,
+                        minLines: 10, //Normal textInputField will be displayed
+                        maxLines:
+                            500, // when user presses enter it will adapt to it
                       ),
-                      keyboardType: TextInputType.multiline,
-                      minLines: 10, //Normal textInputField will be displayed
-                      maxLines:
-                          500, // when user presses enter it will adapt to it
                     ),
                   ),
-                ),
 
-                // Button Next
-                Container(
-                  width: propWidth(183),
-                  constraints: BoxConstraints(maxWidth: 300, minWidth: 100),
-                  child: ElevatedButton(
+                  // Button Next
+                  Container(
+                    width: propWidth(183),
+                    constraints: BoxConstraints(maxWidth: 300, minWidth: 100),
+                    child: ElevatedButton(
                       onPressed: () {
-                        // Redirection to another page
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Register4KoudmenPage(),
-                          ),
-                        );
+                        String keywords = _controller.text;
+                        if (keywords.isNotEmpty) {
+                          _addToFirestore(keywords, userId);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Register4KoudmenPage(),
+                            ),
+                          );
+                        } else {
+                          print('Veuillez entrer des mots-clés');
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
@@ -90,13 +141,16 @@ class Register3KoudmenPage extends StatelessWidget {
                       child: Text(
                         "Suivant",
                         style: TextStyle(
-                            fontSize: propHeight(14),
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white),
-                      )),
-                ),
-              ],
+                          fontSize: propHeight(14),
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

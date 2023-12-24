@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/custom_icons.dart';
@@ -9,7 +8,10 @@ import 'package:koudmen/widgets/customTextField.dart';
 
 class Register2KoudmenPage extends StatelessWidget {
   final String previousFormValues;
-  const Register2KoudmenPage({Key? key, required this.previousFormValues})
+  final String userId;
+
+  const Register2KoudmenPage(
+      {Key? key, required this.previousFormValues, required this.userId})
       : super(key: key);
 
   @override
@@ -40,9 +42,11 @@ class Register2KoudmenPage extends StatelessWidget {
               SizedBox(height: propHeight(20)),
 
               Expanded(
-                  child: Register2Form(
-                previousFormValues: previousFormValues,
-              ))
+                child: Register2Form(
+                  previousFormValues: previousFormValues,
+                  userId: userId,
+                ),
+              ),
             ],
           ),
         ),
@@ -53,7 +57,10 @@ class Register2KoudmenPage extends StatelessWidget {
 
 class Register2Form extends StatefulWidget {
   final String previousFormValues;
-  Register2Form({Key? key, required this.previousFormValues}) : super(key: key);
+  final String userId;
+  Register2Form(
+      {Key? key, required this.previousFormValues, required this.userId})
+      : super(key: key);
 
   @override
   _Register2FormState createState() => _Register2FormState();
@@ -74,7 +81,7 @@ class _Register2FormState extends State<Register2Form> {
     decode["adress"] = adress;
     decode["city"] = city;
     decode["zipCode"] = zipCode;
-    decode["structurephone"] = phone;
+    decode["phone"] = phone;
     var res = jsonEncode(decode);
 
     print(decode);
@@ -214,47 +221,53 @@ class _Register2FormState extends State<Register2Form> {
                             constraints:
                                 BoxConstraints(maxWidth: 300, minWidth: 100),
                             child: ElevatedButton(
-                                onPressed: () async {
-                                  // Check if all fields are complete and if email are the same
-                                  if (_formKey.currentState!.validate()) {
-                                    // Save values to send
-                                    _formKey.currentState!.save();
-                                    var formValues = await sendForm(
-                                        adress,
-                                        city,
-                                        zipCode,
-                                        phone,
-                                        widget.previousFormValues);
+                              onPressed: () async {
+                                // Check if all fields are complete and if email are the same
+                                if (_formKey.currentState!.validate()) {
+                                  // Save values to send
+                                  _formKey.currentState!.save();
+                                  var formValues = await sendForm(
+                                    adress,
+                                    city,
+                                    zipCode,
+                                    phone,
+                                    widget.previousFormValues,
+                                  );
+                                  print(widget.userId);
+                                  print(formValues);
 
-                                    print(formValues);
-
-                                    // Redirection to another page
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              Register3KoudmenPage(
-                                            // Give the form values to the 2nd page
-                                            previousFormValues: formValues,
-                                          ),
-                                        ));
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 0,
-                                  backgroundColor: purpleCol,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
+                                  // Redirection to another page
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          Register3KoudmenPage(
+                                        // Give the form values to the 2nd page
+                                        previousFormValues: formValues,
+                                        question1Answer: '',
+                                        question2Answer: '',
+                                        userId: widget.userId,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor: purpleCol,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
-                                child: Text(
-                                  "Suivant",
-                                  style: TextStyle(
-                                      fontSize: propHeight(14),
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.white),
-                                )),
+                              ),
+                              child: Text(
+                                "Suivant",
+                                style: TextStyle(
+                                    fontSize: propHeight(14),
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white),
+                              ),
+                            ),
                           ),
                         ],
                       ),

@@ -1,14 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_4_phase2%20Koudmen_Augmenter.dart';
 import 'package:koudmen/screens/about_koudemen.dart';
 import 'package:koudmen/size_config.dart';
 
 class Register7KoudmenAugmenterPage extends StatefulWidget {
-  final FormData2 formData2;
-  const Register7KoudmenAugmenterPage({Key? key, required this.formData2})
-      : super(key: key);
-
   @override
   _Register7KoudmenAugmenterPageState createState() =>
       _Register7KoudmenAugmenterPageState();
@@ -17,6 +13,20 @@ class Register7KoudmenAugmenterPage extends StatefulWidget {
 class _Register7KoudmenAugmenterPageState
     extends State<Register7KoudmenAugmenterPage> {
   String selectedImage = '';
+
+  void _addToFirestore(String selectedImage) {
+    CollectionReference<Object?> collection =
+        FirebaseFirestore.instance.collection('Users');
+
+    collection.add({
+      'filtre4': selectedImage,
+      // Ajoutez d'autres données si nécessaire
+    }).then((value) {
+      print('Données ajoutées avec succès à Firestore');
+    }).catchError((error) {
+      print('Erreur lors de l\'ajout des données à Firestore: $error');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +56,26 @@ class _Register7KoudmenAugmenterPageState
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    logoKarisko,
+                    // Logo
+                    SizedBox(
+                      height: propHeight(40),
+                      width: propWidth(50),
+                      child: logoKarisko,
+                    ),
                     SizedBox(height: propHeight(20)),
+
+                    // First Image
                     GestureDetector(
                       onTap: () {
-                        // Lorsque l'utilisateur clique sur la première image
                         setState(() {
                           selectedImage = 'image7';
+                          _addToFirestore(selectedImage);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AboutKoudmenPage(),
+                            ),
+                          );
                         });
                       },
                       child: Image.asset(
@@ -65,11 +88,19 @@ class _Register7KoudmenAugmenterPageState
                       ),
                     ),
                     SizedBox(height: propHeight(20)),
+
+                    // Second Image
                     GestureDetector(
                       onTap: () {
-                        // Lorsque l'utilisateur clique sur la deuxième image
                         setState(() {
                           selectedImage = 'image8';
+                          _addToFirestore(selectedImage);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AboutKoudmenPage(),
+                            ),
+                          );
                         });
                       },
                       child: Image.asset(
@@ -82,49 +113,6 @@ class _Register7KoudmenAugmenterPageState
                       ),
                     ),
                     SizedBox(height: propHeight(20)),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 33,
-                          width: 183,
-                          // Bouton register
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Créer une instance de FormData avec les données actuelles
-                              FormData2 formData2 = FormData2(
-                                selectedImage: selectedImage,
-                              );
-                              // Imprimer les données et l'image sélectionnée
-                              print("Form Data: $formData2");
-                              print("Selected Image: $selectedImage");
-
-                              // Redirection vers une autre page avec les données
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AboutKoudmenPage(),
-                                ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: purpleCol,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(9),
-                              ),
-                            ),
-                            child: Text(
-                              "Valider",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                      ],
-                    ),
                   ],
                 ),
               ),

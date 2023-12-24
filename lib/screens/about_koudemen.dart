@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen inscription/register_1_phase1 Koudmen.dart';
-import 'package:koudmen/screens/Koudmen Augmenter Inscription/register_1_phase1Koudmen_Augmenter.dart';
+import 'package:koudmen/screens/Connexion/connexionPage.dart';
+import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_0_phase1Koudmen_Augmenter.dart';
+import 'package:koudmen/screens/Koudmen%20inscription/register_0_phase1Koudmen.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 // ignore: unused_import
@@ -76,7 +77,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Register1KoudmenPage(),
+                                  builder: (context) => Register0KoudmenPage(),
                                 ),
                               );
                             },
@@ -109,7 +110,7 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      Register1KoudmenAugmenterPage(),
+                                      Register0KoudmenAugmenterPage(),
                                 ),
                               );
                             },
@@ -134,13 +135,23 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                         SizedBox(height: 50),
 
                         // Text register
-                        Text(
-                          "Déjà enregistré ?",
-                          style: TextStyle(
-                            color: purpleCol,
-                            fontSize: 14,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.normal,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginPage(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "Déjà enregistré ?",
+                            style: TextStyle(
+                              color: purpleCol,
+                              fontSize: 14,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         )
                       ],

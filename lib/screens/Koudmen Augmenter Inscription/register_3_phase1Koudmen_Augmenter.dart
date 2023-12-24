@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
@@ -10,21 +11,36 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
   final String previousFormValues;
   final String question1Answer;
   final String question2Answer;
+  final String userId;
 
   Register3KoudmenAugmenterPage({
     Key? key,
     required this.previousFormValues,
     required this.question1Answer,
     required this.question2Answer,
+    required this.userId,
   }) : super(key: key);
 
-  void _addToFirestore(String keywords) {
+  void _addToFirestore(String keywords, String userId) {
+    Map<String, dynamic> previousFormData =
+        jsonDecode(previousFormValues); // Convertir la chaîne JSON en Map
+
     CollectionReference<Object?> collection =
         FirebaseFirestore.instance.collection('Users');
 
-    collection.add({
+    collection.doc(userId).set({
+      'userId': userId,
       'keywords': keywords,
-      'previousFormValues': previousFormValues,
+      'nom': previousFormData['Nom'],
+      'prenom': previousFormData['Prenom'],
+      'email': previousFormData['email'],
+      'telephone': previousFormData['Téléphone'],
+      'telephone de la structure': previousFormData['structurephone'],
+      'adresse': previousFormData['adress'],
+      'ville': previousFormData['city'],
+      'codePostal': previousFormData['zipCode'],
+      'Ouboutou de la Structure': previousFormData['structureName'],
+      'siretNumber': previousFormData['siretNumber'],
       'question1Answer': question1Answer,
       'question2Answer': question2Answer,
       // Ajoutez d'autres réponses aux questions précédentes
@@ -38,7 +54,6 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController _controller = TextEditingController();
-
     return Container(
       decoration: gradientBackgroundDecoration,
       child: SafeArea(
@@ -97,7 +112,7 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
                       onPressed: () {
                         String keywords = _controller.text;
                         if (keywords.isNotEmpty) {
-                          _addToFirestore(keywords);
+                          _addToFirestore(keywords, userId);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

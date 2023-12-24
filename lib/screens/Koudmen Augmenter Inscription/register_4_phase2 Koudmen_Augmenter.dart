@@ -1,25 +1,32 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_5_phase2%20Koudmen_Augmenter.dart';
 import 'package:koudmen/size_config.dart';
 
 class Register4KoudmenAugmenterPage extends StatefulWidget {
-  const Register4KoudmenAugmenterPage({Key? key}) : super(key: key);
-
   @override
   _Register4KoudmenAugmenterPageState createState() =>
       _Register4KoudmenAugmenterPageState();
 }
 
-class FormData2 {
-  late final String selectedImage;
-
-  FormData2({required this.selectedImage});
-}
-
 class _Register4KoudmenAugmenterPageState
     extends State<Register4KoudmenAugmenterPage> {
   String selectedImage = '';
+
+  void _addToFirestore(String selectedImage) {
+    CollectionReference<Object?> collection =
+        FirebaseFirestore.instance.collection('Users');
+
+    collection.add({
+      'filtre1': selectedImage,
+      // Ajoutez d'autres données si nécessaire
+    }).then((value) {
+      print('Données ajoutées avec succès à Firestore');
+    }).catchError((error) {
+      print('Erreur lors de l\'ajout des données à Firestore: $error');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +56,27 @@ class _Register4KoudmenAugmenterPageState
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    logoKarisko,
+                    // Logo
+                    SizedBox(
+                      height: propHeight(40),
+                      width: propWidth(50),
+                      child: logoKarisko,
+                    ),
                     SizedBox(height: propHeight(20)),
+
+                    // First Image
                     GestureDetector(
                       onTap: () {
-                        // Lorsque l'utilisateur clique sur la première image
                         setState(() {
                           selectedImage = 'image1';
+                          _addToFirestore(selectedImage);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  Register5KoudmenAugmenterPage(),
+                            ),
+                          );
                         });
                       },
                       child: Image.asset(
@@ -68,11 +89,20 @@ class _Register4KoudmenAugmenterPageState
                       ),
                     ),
                     SizedBox(height: propHeight(20)),
+
+                    // Second Image
                     GestureDetector(
                       onTap: () {
-                        // Lorsque l'utilisateur clique sur la deuxième image
                         setState(() {
                           selectedImage = 'image2';
+                          _addToFirestore(selectedImage);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  Register5KoudmenAugmenterPage(),
+                            ),
+                          );
                         });
                       },
                       child: Image.asset(
@@ -85,52 +115,6 @@ class _Register4KoudmenAugmenterPageState
                       ),
                     ),
                     SizedBox(height: propHeight(20)),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 33,
-                          width: 183,
-                          // Bouton register
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Créer une instance de FormData avec les données actuelles
-                              // ignore: unused_local_variable
-                              FormData2 formData2 = FormData2(
-                                selectedImage: selectedImage,
-                              );
-                              // Imprimer les données et l'image sélectionnée
-                              print("Form Data: $formData2");
-                              print("Selected Image: $selectedImage");
-
-                              // Redirection vers une autre page avec les données
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      Register5KoudmenAugmenterPage(
-                                          formData2: formData2),
-                                ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: purpleCol,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(9),
-                              ),
-                            ),
-                            child: Text(
-                              "Suivant",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                      ],
-                    ),
                   ],
                 ),
               ),
