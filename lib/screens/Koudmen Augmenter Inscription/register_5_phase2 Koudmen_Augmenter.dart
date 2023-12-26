@@ -5,6 +5,9 @@ import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_6_pha
 import 'package:koudmen/size_config.dart';
 
 class Register5KoudmenAugmenterPage extends StatefulWidget {
+  final String userId;
+  Register5KoudmenAugmenterPage({Key? key, required this.userId})
+      : super(key: key);
   @override
   _Register5KoudmenAugmenterPageState createState() =>
       _Register5KoudmenAugmenterPageState();
@@ -14,11 +17,11 @@ class _Register5KoudmenAugmenterPageState
     extends State<Register5KoudmenAugmenterPage> {
   String selectedImage = '';
 
-  void _addToFirestore(String selectedImage) {
+  void _addToFirestore(String selectedImage, userId) {
     CollectionReference<Object?> collection =
         FirebaseFirestore.instance.collection('Users');
 
-    collection.add({
+    collection.doc(userId).update({
       'filtre2': selectedImage,
       // Ajoutez d'autres données si nécessaire
     }).then((value) {
@@ -69,12 +72,13 @@ class _Register5KoudmenAugmenterPageState
                       onTap: () {
                         setState(() {
                           selectedImage = 'image3';
-                          _addToFirestore(selectedImage);
+                          _addToFirestore(selectedImage, widget.userId);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  Register6KoudmenAugmenterPage(),
+                                  Register6KoudmenAugmenterPage(
+                                      userId: widget.userId),
                             ),
                           );
                         });
@@ -95,12 +99,13 @@ class _Register5KoudmenAugmenterPageState
                       onTap: () {
                         setState(() {
                           selectedImage = 'image4';
-                          _addToFirestore(selectedImage);
+                          _addToFirestore(selectedImage, widget.userId);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  Register6KoudmenAugmenterPage(),
+                                  Register6KoudmenAugmenterPage(
+                                      userId: widget.userId),
                             ),
                           );
                         });

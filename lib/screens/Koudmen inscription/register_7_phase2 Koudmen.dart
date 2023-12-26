@@ -1,16 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
-import 'package:koudmen/screens/Koudmen%20inscription/register_4_phase2%20Koudmen.dart';
 import 'package:koudmen/screens/about_koudemen.dart';
 import 'package:koudmen/size_config.dart';
 
 class Register7KoudmenPage extends StatefulWidget {
-  final FormData formData;
-  const Register7KoudmenPage({
-    Key? key,
-    required this.formData,
-  }) : super(key: key);
-
+  final String userId;
+  Register7KoudmenPage({Key? key, required this.userId}) : super(key: key);
   @override
   _Register7KoudmenPageState createState() => _Register7KoudmenPageState();
 }
@@ -18,9 +14,22 @@ class Register7KoudmenPage extends StatefulWidget {
 class _Register7KoudmenPageState extends State<Register7KoudmenPage> {
   String selectedImage = '';
 
+  void _addToFirestore(String selectedImage, String userId) {
+    CollectionReference<Object?> collection =
+        FirebaseFirestore.instance.collection('Users');
+
+    collection.doc(userId).update({
+      'filtre4': selectedImage,
+      // Ajoutez d'autres données si nécessaire
+    }).then((value) {
+      print('Données ajoutées avec succès à Firestore');
+    }).catchError((error) {
+      print('Erreur lors de l\'ajout des données à Firestore: $error');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    print("Received Data: ${widget.formData}");
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -47,13 +56,26 @@ class _Register7KoudmenPageState extends State<Register7KoudmenPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    logoKarisko,
+                    // Logo
+                    SizedBox(
+                      height: propHeight(40),
+                      width: propWidth(50),
+                      child: logoKarisko,
+                    ),
                     SizedBox(height: propHeight(20)),
+
+                    // First Image
                     GestureDetector(
                       onTap: () {
-                        // Lorsque l'utilisateur clique sur la première image
                         setState(() {
                           selectedImage = 'image7';
+                          _addToFirestore(selectedImage, widget.userId);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AboutKoudmenPage(),
+                            ),
+                          );
                         });
                       },
                       child: Image.asset(
@@ -66,11 +88,19 @@ class _Register7KoudmenPageState extends State<Register7KoudmenPage> {
                       ),
                     ),
                     SizedBox(height: propHeight(20)),
+
+                    // Second Image
                     GestureDetector(
                       onTap: () {
-                        // Lorsque l'utilisateur clique sur la première image
                         setState(() {
                           selectedImage = 'image8';
+                          _addToFirestore(selectedImage, widget.userId);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AboutKoudmenPage(),
+                            ),
+                          );
                         });
                       },
                       child: Image.asset(
@@ -83,45 +113,6 @@ class _Register7KoudmenPageState extends State<Register7KoudmenPage> {
                       ),
                     ),
                     SizedBox(height: propHeight(20)),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 33,
-                          width: 183,
-                          // Bouton register
-                          child: ElevatedButton(
-                            onPressed: () {
-                              FormData formData = FormData(
-                                selectedImage: selectedImage,
-                              );
-                              print("Form Data: $formData");
-                              print("Selected Image: $selectedImage");
-                              // Redirection to another page
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AboutKoudmenPage()),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: purpleCol,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(9),
-                              ),
-                            ),
-                            child: Text(
-                              "Valider",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                      ],
-                    ),
                   ],
                 ),
               ),

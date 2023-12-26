@@ -5,6 +5,9 @@ import 'package:koudmen/screens/about_koudemen.dart';
 import 'package:koudmen/size_config.dart';
 
 class Register7KoudmenAugmenterPage extends StatefulWidget {
+  final String userId;
+  Register7KoudmenAugmenterPage({Key? key, required this.userId})
+      : super(key: key);
   @override
   _Register7KoudmenAugmenterPageState createState() =>
       _Register7KoudmenAugmenterPageState();
@@ -14,11 +17,11 @@ class _Register7KoudmenAugmenterPageState
     extends State<Register7KoudmenAugmenterPage> {
   String selectedImage = '';
 
-  void _addToFirestore(String selectedImage) {
+  void _addToFirestore(String selectedImage, String userId) {
     CollectionReference<Object?> collection =
         FirebaseFirestore.instance.collection('Users');
 
-    collection.add({
+    collection.doc(userId).update({
       'filtre4': selectedImage,
       // Ajoutez d'autres données si nécessaire
     }).then((value) {
@@ -69,7 +72,7 @@ class _Register7KoudmenAugmenterPageState
                       onTap: () {
                         setState(() {
                           selectedImage = 'image7';
-                          _addToFirestore(selectedImage);
+                          _addToFirestore(selectedImage, widget.userId);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -94,7 +97,7 @@ class _Register7KoudmenAugmenterPageState
                       onTap: () {
                         setState(() {
                           selectedImage = 'image8';
-                          _addToFirestore(selectedImage);
+                          _addToFirestore(selectedImage, widget.userId);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
