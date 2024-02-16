@@ -332,7 +332,7 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
     final chips = [
       FilterChip(
         selectedColor: Color(0xFFF68181),
-        label: Text("Health"),
+        label: Text("Santé"),
         selected: isSelectedHealth.value,
         onSelected: (value) {
           setState(() {
@@ -342,7 +342,7 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
       ),
       FilterChip(
         selectedColor: Color(0xFF57BBB4),
-        label: Text("Social"),
+        label: Text("Sociale"),
         selected: isSelectedSocial.value,
         onSelected: (value) {
           setState(() {
@@ -352,7 +352,7 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
       ),
       FilterChip(
         selectedColor: Color(0xFFCAA2FF),
-        label: Text("Artistic"),
+        label: Text("Artistique"),
         selected: isSelectedArtistic.value,
         onSelected: (value) {
           setState(() {
@@ -362,7 +362,7 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
       ),
       FilterChip(
         selectedColor: Color(0xFFF68181),
-        label: Text("Humanitarian"),
+        label: Text("Humanitaire"),
         selected: isSelectedHumanitarian.value,
         onSelected: (value) {
           setState(() {
@@ -372,7 +372,7 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
       ),
       FilterChip(
         selectedColor: Color(0xFF57BBB4),
-        label: Text("Environment"),
+        label: Text("Environnement"),
         selected: isSelectedEnvironment.value,
         onSelected: (value) {
           setState(() {
@@ -402,7 +402,7 @@ class _FilterChipDemoState extends State<_FilterChipDemo>
       ),
       FilterChip(
         selectedColor: Color(0xFF57BBB4),
-        label: Text("Heritage"),
+        label: Text("Patrimoine"),
         selected: isSelectedHeritage.value,
         onSelected: (value) {
           setState(() {
