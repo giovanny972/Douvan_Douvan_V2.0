@@ -4,6 +4,7 @@ import 'package:koudmen/constantes.dart';
 import 'package:koudmen/size_config.dart';
 import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_4_phase2%20Koudmen_Augmenter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Register3KoudmenAugmenterPage extends StatelessWidget {
   // ignore: unused_field
@@ -49,6 +50,34 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
     }).catchError((error) {
       print('Erreur lors de l\'ajout des données à Firestore: $error');
     });
+  }
+
+  void _showToast(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: Row(
+            children: [
+              Image.asset('assets/images/undraw_Notify_re_65on.png',
+                  width: 44, height: 44), // Ajoutez l'icône ici
+              SizedBox(width: 8), // Ajoutez un espace entre l'icône et le texte
+              Text("Phase 2:"),
+            ],
+          ),
+          content: Text("Selectionner une image parmis les 2"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -113,12 +142,19 @@ class Register3KoudmenAugmenterPage extends StatelessWidget {
                         String keywords = _controller.text;
                         if (keywords.isNotEmpty) {
                           _addToFirestore(keywords, userId);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  Register4KoudmenAugmenterPage(userId: userId),
-                            ),
+                          _showToast(context);
+                          Future.delayed(
+                            Duration(seconds: 3),
+                            () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      Register4KoudmenAugmenterPage(
+                                          userId: userId),
+                                ),
+                              );
+                            },
                           );
                         } else {
                           print('Veuillez entrer des mots-clés');

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:koudmen/constantes.dart';
 import 'package:koudmen/screens/about_koudemen.dart';
 import 'package:koudmen/size_config.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Register7KoudmenAugmenterPage extends StatefulWidget {
   final String userId;
@@ -29,6 +30,35 @@ class _Register7KoudmenAugmenterPageState
     }).catchError((error) {
       print('Erreur lors de l\'ajout des données à Firestore: $error');
     });
+  }
+
+  void _showToast(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: Row(
+            children: [
+              Image.asset('assets/images/undraw_Notify_re_65on.png',
+                  width: 44, height: 44), // Ajoutez l'icône ici
+              SizedBox(width: 8), // Ajoutez un espace entre l'icône et le texte
+              Text("Validation:"),
+            ],
+          ),
+          content: Text(
+              "L'inscription a bien été envoyée au Traider Koudmen. Nous vous contacterons dans les plus brefs délais ! Vous pouvez maintenant vous connecter !"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Valider"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -79,6 +109,7 @@ class _Register7KoudmenAugmenterPageState
                               builder: (context) => AboutKoudmenPage(),
                             ),
                           );
+                          _showToast(context);
                         });
                       },
                       child: Image.asset(
@@ -98,6 +129,7 @@ class _Register7KoudmenAugmenterPageState
                         setState(() {
                           selectedImage = 'image8';
                           _addToFirestore(selectedImage, widget.userId);
+                          _showToast(context);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

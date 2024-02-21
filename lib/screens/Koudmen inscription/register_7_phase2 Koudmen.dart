@@ -28,6 +28,35 @@ class _Register7KoudmenPageState extends State<Register7KoudmenPage> {
     });
   }
 
+  void _showToast(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: Row(
+            children: [
+              Image.asset('assets/images/undraw_Notify_re_65on.png',
+                  width: 44, height: 44), // Ajoutez l'icône ici
+              SizedBox(width: 8), // Ajoutez un espace entre l'icône et le texte
+              Text("Validation:"),
+            ],
+          ),
+          content: Text(
+              "L'inscription a bien été envoyée au Traider Koudmen. Nous vous contacterons dans les plus brefs délais ! Vous pouvez maintenant vous connecter !"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,16 +96,20 @@ class _Register7KoudmenPageState extends State<Register7KoudmenPage> {
                     // First Image
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          selectedImage = 'image7';
-                          _addToFirestore(selectedImage, widget.userId);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AboutKoudmenPage(),
-                            ),
-                          );
-                        });
+                        setState(
+                          () {
+                            selectedImage = 'image7';
+                            _addToFirestore(selectedImage, widget.userId);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AboutKoudmenPage(),
+                              ),
+                            );
+                            // Appel de la fonction _showToast pour afficher la boîte de dialogue
+                            _showToast(context);
+                          },
+                        );
                       },
                       child: Image.asset(
                         'assets/images/image_application_7.png',
@@ -101,6 +134,8 @@ class _Register7KoudmenPageState extends State<Register7KoudmenPage> {
                               builder: (context) => AboutKoudmenPage(),
                             ),
                           );
+                          // Appel de la fonction _showToast pour afficher la boîte de dialogue
+                          _showToast(context);
                         });
                       },
                       child: Image.asset(

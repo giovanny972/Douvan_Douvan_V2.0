@@ -5,6 +5,8 @@ import 'package:koudmen/screens/Koudmen%20Augmenter%20Inscription/register_0_pha
 import 'package:koudmen/screens/Koudmen%20inscription/register_0_phase1Koudmen.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 // ignore: unused_import
 import 'dart:async' show Future;
 
@@ -16,6 +18,46 @@ class AboutKoudmenPage extends StatefulWidget {
 }
 
 class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
+  // void _showToast() {
+  //   Fluttertoast.showToast(
+  //     msg: "Phase 1: Entrée votre 'User' et votre 'Mot de passe'  !",
+  //     toastLength: Toast.LENGTH_SHORT,
+  //     gravity: ToastGravity.BOTTOM,
+  //     timeInSecForIosWeb: 2,
+  //     backgroundColor: Colors.white,
+  //     textColor: Colors.black,
+  //     fontSize: 16.0,
+  //   );
+  // }
+  void _showToast(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: Row(
+            children: [
+              Image.asset('assets/images/undraw_Notify_re_65on.png',
+                  width: 44, height: 44), // Ajoutez l'icône ici
+              SizedBox(width: 8), // Ajoutez un espace entre l'icône et le texte
+              Text("Phase 1:"),
+            ],
+          ),
+          content: Text(
+              "Entrez un 'Nom d'utilisateur' et un 'Mot de passe' pour continuer l'inscription !"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -73,12 +115,19 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                           // Bouton register
                           child: ElevatedButton(
                             onPressed: () {
+                              _showToast(context);
                               // Redirection to another page
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Register0KoudmenPage(),
-                                ),
+                              Future.delayed(
+                                Duration(seconds: 3),
+                                () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          Register0KoudmenPage(),
+                                    ),
+                                  );
+                                },
                               );
                             },
                             style: ElevatedButton.styleFrom(
@@ -105,13 +154,19 @@ class _AboutKoudmenPageState extends State<AboutKoudmenPage> {
                           // Bouton register
                           child: ElevatedButton(
                             onPressed: () {
+                              _showToast(context);
                               // Redirection to another page
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      Register0KoudmenAugmenterPage(),
-                                ),
+                              Future.delayed(
+                                Duration(seconds: 3),
+                                () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          Register0KoudmenPage(),
+                                    ),
+                                  );
+                                },
                               );
                             },
                             style: ElevatedButton.styleFrom(
